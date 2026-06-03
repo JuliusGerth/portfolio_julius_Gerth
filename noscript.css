@@ -1,0 +1,5 @@
+/* Fallback voor bezoekers zonder JavaScript: toon reveal-elementen direct */
+[data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}

@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Julius Gerth - Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
+    <noscript><link rel="stylesheet" href="noscript.css" /></noscript>
   </head>
   <body>
-    <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
-
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
@@ -23,6 +22,7 @@
         <div class="hero-bg">
           <div class="blob blob-1"></div>
           <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
         </div>
         <div class="hero-inner">
           <img
@@ -32,14 +32,15 @@
           />
           <div class="hero-content">
             <h1>Julius Gerth</h1>
-            <p class="hero-tagline" id="heroTagline">Communication &amp; Multimedia Design student</p>
+            <p class="hero-tagline" id="heroTagline">
+              Communication &amp; Multimedia Design student
+            </p>
             <p class="hero-desc">
               Op deze site vind je meer over mij en de projecten die ik heb
               gemaakt.
             </p>
             <ul class="hero-info">
               <li>Geboren 3 februari 2004</li>
-              <li>+31 06 57 89 71 58</li>
               <li>julger04@gmail.com</li>
               <li>Hoofddorp, Nederland</li>
             </ul>
@@ -86,12 +87,13 @@
             </a>
           </li>
           <li class="project-card" data-reveal>
-            <a href="stage.html" class="project-card-link">
-              <div class="project-card-img-placeholder">Stage</div>
+            <a href="workshop.html" class="project-card-link">
+              <div class="project-card-img-placeholder">Workshop</div>
               <div class="project-card-body">
-                <h3>Stage Multitankcard</h3>
+                <h3>UX-workshop met Vitali</h3>
                 <p>
-                  Van feedbackfiltering naar een iteratief getest high-fi prototype in 10 weken.
+                  Hoe meet je de impact van UX/design? Van waarde-architectuur
+                  tot ROI en het overtuigen van belanghebbenden.
                 </p>
                 <span class="project-card-link-text">Lees meer →</span>
               </div>
@@ -164,7 +166,7 @@
               <div class="project-card-body">
                 <h3>Movie Matching</h3>
                 <p>Een webapp voor het ontdekken van films en tv-shows.</p>
-                <span class="project-card-link-text">Lees meer →</span>
+                <span class="project-card-link-text">Lees meer &rarr;</span>
               </div>
             </a>
           </li>
@@ -207,98 +209,10 @@
         >
       </div>
     </footer>
-  <button class="back-top" id="backTop" aria-label="Terug naar boven">↑</button>
+    <button class="back-top" id="backTop" aria-label="Terug naar boven">
+      ↑
+    </button>
 
-  <script>
-    (function () {
-      // ── Scroll reveal ────────────────────────────────
-      const revealObserver = new IntersectionObserver(
-        entries => entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('is-visible');
-            revealObserver.unobserve(e.target);
-          }
-        }),
-        { threshold: 0.1 }
-      );
-      document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
-
-      // ── Counter animation ────────────────────────────
-      function countUp(el, target) {
-        const duration = 1200;
-        const start = performance.now();
-        (function tick(now) {
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(eased * target);
-          if (p < 1) requestAnimationFrame(tick);
-        })(start);
-      }
-      const statsEl = document.querySelector('.stats-strip');
-      if (statsEl) {
-        new IntersectionObserver(entries => {
-          if (entries[0].isIntersecting) {
-            statsEl.querySelectorAll('.stat-number').forEach(el => {
-              const t = parseInt(el.textContent);
-              countUp(el, t);
-            });
-          }
-        }, { threshold: 0.6 }).observe(statsEl);
-      }
-
-      // ── Nav: blur on scroll + active section ─────────
-      const nav = document.querySelector('nav');
-      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-      const backTop = document.getElementById('backTop');
-
-      window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 20);
-        backTop.classList.toggle('visible', window.scrollY > 300);
-      }, { passive: true });
-
-      new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            navLinks.forEach(a => a.classList.remove('active'));
-            const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-            if (a) a.classList.add('active');
-          }
-        });
-      }, { rootMargin: '-45% 0px -45% 0px' })
-        .observe && document.querySelectorAll('section[id]').forEach(s =>
-          new IntersectionObserver(entries => {
-            entries.forEach(e => {
-              if (e.isIntersecting) {
-                navLinks.forEach(a => a.classList.remove('active'));
-                const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-                if (a) a.classList.add('active');
-              }
-            });
-          }, { rootMargin: '-45% 0px -45% 0px' }).observe(s)
-        );
-
-      // ── Back to top ──────────────────────────────────
-      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-      // ── Rotating tagline ─────────────────────────────
-      const tagline = document.getElementById('heroTagline');
-      const phrases = [
-        'Communication & Multimedia Design student',
-        'UX Designer',
-        'Frontend Developer',
-        'Creatief denker'
-      ];
-      let i = 0;
-      setInterval(() => {
-        tagline.classList.add('switching');
-        setTimeout(() => {
-          i = (i + 1) % phrases.length;
-          tagline.textContent = phrases[i];
-          tagline.classList.remove('switching');
-        }, 300);
-      }, 2800);
-
-    })();
-  </script>
+    <script src="script.js"></script>
   </body>
 </html>
