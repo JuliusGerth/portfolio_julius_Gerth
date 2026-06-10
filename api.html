@@ -5,37 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API - Julius Gerth</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lang.js"></script>
   </head>
   <body>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
-        <li><a href="index.html#over-mij">Over mij</a></li>
-        <li><a href="index.html#projecten">Projecten</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#over-mij"><span data-lang="nl">Over mij</span><span data-lang="en">About</span></a></li>
+        <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-item">
+          <button type="button" class="lang-toggle" aria-label="Switch language / Taal wisselen">
+            <span data-lang="nl">EN</span><span data-lang="en">NL</span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <main>
       <div class="project-detail">
-        <a href="index.html#projecten" class="back-link">← Terug naar projecten</a>
+        <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
         <h1>API</h1>
         <img src="https://smartjulger.github.io/meesterschap/images/projecten/solar.png" alt="API project screenshot" />
 
-        <h2>Over dit project</h2>
-        <p>
+        <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
+        <p data-lang="nl">
           Voor dit vak heb ik een 3D-website gebouwd met behulp van een externe API en Three.js. Het project was een grote stap in mijn ontwikkeling als developer: ik leerde hoe je data van een API verwerkt en visueel weergeeft in een interactieve 3D-omgeving.
         </p>
+        <p data-lang="en">
+          For this course I built a 3D website using an external API and
+          Three.js. The project was a big step in my growth as a developer: I
+          learned how to process data from an API and display it visually in an
+          interactive 3D environment.
+        </p>
 
-        <h3>Wat ik heb geleerd</h3>
-        <p>
+        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h3>
+        <p data-lang="nl">
           Ik heb geleerd hoe je een volledige 3D-website bouwt en wat de echte kracht van JavaScript is. API's ontsluiten enorme hoeveelheden data die je creatief kunt inzetten.
+        </p>
+        <p data-lang="en">
+          I learned how to build a full 3D website and discovered the real power
+          of JavaScript. APIs unlock enormous amounts of data that you can use
+          creatively.
         </p>
 
         <h3>Links</h3>
         <ul>
-          <li><a href="https://solar-julius.onrender.com/" target="_blank">Bekijk het live project →</a></li>
-          <li><a href="https://github.com/smartjulger/api" target="_blank">GitHub repository →</a></li>
+          <li><a href="https://solar-julius.onrender.com/" target="_blank"><span data-lang="nl">Bekijk het live project →</span><span data-lang="en">View the live project →</span></a></li>
+          <li><a href="https://github.com/smartjulger/api" target="_blank"><span data-lang="nl">GitHub-repository →</span><span data-lang="en">GitHub repository →</span></a></li>
         </ul>
       </div>
     </main>

@@ -1,50 +1,80 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beyond - Julius Gerth</title>
+    <title>Rest Quest - Julius Gerth</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lang.js"></script>
   </head>
   <body>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
-        <li><a href="index.html#over-mij">Over mij</a></li>
-        <li><a href="index.html#projecten">Projecten</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#over-mij"><span data-lang="nl">Over mij</span><span data-lang="en">About</span></a></li>
+        <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-item">
+          <button type="button" class="lang-toggle" aria-label="Switch language / Taal wisselen">
+            <span data-lang="nl">EN</span><span data-lang="en">NL</span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <main>
       <div class="project-detail">
-        <a href="index.html#projecten" class="back-link">← Terug naar projecten</a>
+        <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
         <h1>Rest Quest</h1>
-        <h2>Project Beyond — Rest Quest</h2>
-        <p>
+        <h2><span data-lang="nl">Project Beyond — Rest Quest</span><span data-lang="en">Project Beyond — Rest Quest</span></h2>
+        <p data-lang="nl">
           Als onderdeel van team 4 heb ik meegewerkt aan de ontwikkeling van Rest Quest, een interactief, schermloos product dat eindexamenscholieren helpt om beter te slapen door middel van fysieke en mindful activiteiten.
         </p>
+        <p data-lang="en">
+          As part of team 4, I helped develop Rest Quest, an interactive,
+          screenless product that helps final-year students sleep better through
+          physical and mindful activities.
+        </p>
 
-        <h3>Mijn rol en bijdragen</h3>
-        <p>Ik was actief betrokken bij het gehele ontwerp- en ontwikkelingsproces. Mijn bijdragen:</p>
-        <ul>
+        <h3><span data-lang="nl">Mijn rol en bijdragen</span><span data-lang="en">My role and contributions</span></h3>
+        <p data-lang="nl">Ik was actief betrokken bij het gehele ontwerp- en ontwikkelingsproces. Mijn bijdragen:</p>
+        <p data-lang="en">I was actively involved in the entire design and development process. My contributions:</p>
+        <ul data-lang="nl">
           <li><strong>Onderzoek &amp; Interviews:</strong> Ik heb interviews gehouden met studenten om hun slaapgewoonten en stressfactoren te begrijpen, wat onze ontwerpkeuzes heeft bepaald.</li>
           <li><strong>Testplan &amp; Prototypes:</strong> Samen met het team heb ik testplannen opgesteld en prototypes (Lo-Fi, Me-Fi en Hi-Fi) getest en verbeterd op basis van gebruikersfeedback.</li>
           <li><strong>Conceptontwikkeling:</strong> Ik dacht mee over de kernfuncties van het product, zoals de kaartjesinteractie, de afstandssensor en de auditieve timer.</li>
           <li><strong>Techniek:</strong> Ik werkte aan de integratie van sensoren (afstands- en druksensoren) en een mp3-speler op een Arduino voor de interactieve ervaring.</li>
           <li><strong>Evaluatie &amp; Verbetering:</strong> Door feedbacksessies te leiden hielp ik het product verbeteren, van de fysieke knop tot een visuele timer met LED-strips.</li>
         </ul>
+        <ul data-lang="en">
+          <li><strong>Research &amp; Interviews:</strong> I interviewed students to understand their sleep habits and stress factors, which shaped our design choices.</li>
+          <li><strong>Test plan &amp; Prototypes:</strong> Together with the team I set up test plans and tested and improved prototypes (Lo-Fi, Me-Fi and Hi-Fi) based on user feedback.</li>
+          <li><strong>Concept development:</strong> I helped think through the product's core features, such as the card interaction, the distance sensor and the auditory timer.</li>
+          <li><strong>Engineering:</strong> I worked on integrating sensors (distance and pressure sensors) and an mp3 player on an Arduino for the interactive experience.</li>
+          <li><strong>Evaluation &amp; Improvement:</strong> By leading feedback sessions I helped improve the product, from the physical button to a visual timer with LED strips.</li>
+        </ul>
 
-        <h3>Gebruikte technologieën</h3>
-        <ul>
+        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h3>
+        <ul data-lang="nl">
           <li>Hardware: Arduino, afstandssensor, druksensor, mp3-speler, LED-strips</li>
           <li>Software: C++ (Arduino-programmering)</li>
           <li>Ontwerptools: Figma, Adobe Illustrator</li>
         </ul>
+        <ul data-lang="en">
+          <li>Hardware: Arduino, distance sensor, pressure sensor, mp3 player, LED strips</li>
+          <li>Software: C++ (Arduino programming)</li>
+          <li>Design tools: Figma, Adobe Illustrator</li>
+        </ul>
 
-        <h3>Wat ik heb geleerd</h3>
-        <p>
+        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h3>
+        <p data-lang="nl">
           Dit project leerde mij het belang van een gebruikersgericht ontwerpproces, van onderzoek tot iteratief prototypen en testen. Ik heb praktische ervaring opgedaan met hardware-integratie en samenwerken in een multidisciplinair team.
+        </p>
+        <p data-lang="en">
+          This project taught me the importance of a user-centred design
+          process, from research to iterative prototyping and testing. I gained
+          hands-on experience with hardware integration and collaborating in a
+          multidisciplinary team.
         </p>
       </div>
     </main>

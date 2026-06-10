@@ -64,18 +64,33 @@
       // ── Back to top ──────────────────────────────────
       backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      // ── Rotating tagline ─────────────────────────────
+      // ── Rotating tagline (tweetalig) ─────────────────
       const tagline = document.getElementById('heroTagline');
-      const phrases = [
-        'Communication & Multimedia Design student',
-        'UX Designer',
-        'Frontend Developer',
-        'Creatief denker'
-      ];
+      const taglineSets = {
+        nl: [
+          'Communication & Multimedia Design student',
+          'UX-designer',
+          'Frontend-developer',
+          'Creatieve denker'
+        ],
+        en: [
+          'Communication & Multimedia Design student',
+          'UX Designer',
+          'Frontend Developer',
+          'Creative thinker'
+        ]
+      };
+      const phrasesFor = () => taglineSets[document.documentElement.lang] || taglineSets.nl;
       let i = 0;
+      tagline.textContent = phrasesFor()[i];
+      // Bij wisselen van taal direct de huidige zin in de juiste taal tonen.
+      document.addEventListener('langchange', () => {
+        tagline.textContent = phrasesFor()[i];
+      });
       setInterval(() => {
         tagline.classList.add('switching');
         setTimeout(() => {
+          const phrases = phrasesFor();
           i = (i + 1) % phrases.length;
           tagline.textContent = phrases[i];
           tagline.classList.remove('switching');

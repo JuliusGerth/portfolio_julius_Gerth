@@ -42,6 +42,10 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Language switching (EN / NL) ────────────────── */
+html[lang='en'] [data-lang='nl'] { display: none !important; }
+html:not([lang='en']) [data-lang='en'] { display: none !important; }
+
 
 /* ── Navigation ─────────────────────────────────── */
 nav {
@@ -113,6 +117,30 @@ nav.scrolled {
 .nav-links a.active {
   color: var(--accent);
 }
+
+/* ── Language toggle button ──────────────────────── */
+.nav-links .lang-item {
+  display: flex;
+  align-items: center;
+}
+
+.lang-toggle {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: var(--accent-yellow);
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: filter 0.2s, transform 0.1s;
+}
+
+.lang-toggle:hover { filter: brightness(0.95); }
+.lang-toggle:active { transform: scale(0.94); }
 
 /* ── Main layout ─────────────────────────────────── */
 main {

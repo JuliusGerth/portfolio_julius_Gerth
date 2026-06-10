@@ -1,43 +1,61 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Design System - Julius Gerth</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lang.js"></script>
   </head>
   <body>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
-        <li><a href="index.html#over-mij">Over mij</a></li>
-        <li><a href="index.html#projecten">Projecten</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#over-mij"><span data-lang="nl">Over mij</span><span data-lang="en">About</span></a></li>
+        <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-item">
+          <button type="button" class="lang-toggle" aria-label="Switch language / Taal wisselen">
+            <span data-lang="nl">EN</span><span data-lang="en">NL</span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <main>
       <div class="project-detail">
-        <a href="index.html#projecten" class="back-link">← Terug naar projecten</a>
+        <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
         <h1>Design System</h1>
-        <h2>Over dit project</h2>
-        <p>
+        <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
+        <p data-lang="nl">
           Voor dit project heb ik een eigen design system gebouwd in Figma. Het design system bevat herbruikbare componenten, een kleurenpalet, typografieregels en spacing-afspraken. Het doel was om een consistente visuele taal te creëren die je kunt toepassen op verschillende projecten.
         </p>
+        <p data-lang="en">
+          For this project I built my own design system in Figma. The design
+          system contains reusable components, a colour palette, typography rules
+          and spacing conventions. The goal was to create a consistent visual
+          language that you can apply across different projects.
+        </p>
 
-        <h3>Wat zit erin</h3>
-        <ul>
-          <li>Kleurenpalet met primaire, secondaire en neutraal tinten</li>
+        <h3><span data-lang="nl">Wat zit erin</span><span data-lang="en">What's inside</span></h3>
+        <ul data-lang="nl">
+          <li>Kleurenpalet met primaire, secundaire en neutrale tinten</li>
           <li>Typografische schaal met duidelijke hiërarchie</li>
           <li>Herbruikbare UI-componenten (knoppen, invoervelden, kaarten)</li>
           <li>Spacing- en grid-systeem</li>
+        </ul>
+        <ul data-lang="en">
+          <li>Colour palette with primary, secondary and neutral tones</li>
+          <li>Typographic scale with a clear hierarchy</li>
+          <li>Reusable UI components (buttons, input fields, cards)</li>
+          <li>Spacing and grid system</li>
         </ul>
 
         <h3>Links</h3>
         <ul>
           <li>
             <a href="https://www.figma.com/design/cS3xWiRlwQrwqc6CXh2PZL/Designsystem-Julius--Copy-?node-id=187-6135&t=J8TRRv3WeqeSvckk-1" target="_blank">
-              Bekijk het design system in Figma →
+              <span data-lang="nl">Bekijk het design system in Figma →</span><span data-lang="en">View the design system in Figma →</span>
             </a>
           </li>
         </ul>

@@ -5,110 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UX-workshop met Vitali - Julius Gerth</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lang.js"></script>
   </head>
   <body>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
-        <li><a href="index.html#over-mij">Over mij</a></li>
-        <li><a href="index.html#projecten">Projecten</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#over-mij"><span data-lang="nl">Over mij</span><span data-lang="en">About</span></a></li>
+        <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-item">
+          <button type="button" class="lang-toggle" aria-label="Switch language / Taal wisselen">
+            <span data-lang="nl">EN</span><span data-lang="en">NL</span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <main>
       <div class="project-detail">
-        <a href="index.html#projecten" class="back-link">← Terug naar projecten</a>
-        <h1>UX-workshop met Vitali</h1>
+        <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
+        <h1><span data-lang="nl">UX-workshop met Vitali</span><span data-lang="en">UX workshop with Vitali</span></h1>
 
-        <h2>Hoe meet je de impact van UX/design?</h2>
-
-        <h3>De impact van design</h3>
-        <p>
-          Zodra je begint met meten, word je verantwoordelijk.
+        <h2><span data-lang="nl">Hoe meet je de impact van UX en design?</span><span data-lang="en">How do you measure the impact of UX and design?</span></h2>
+        <p data-lang="nl">
+          In deze workshop liet Vitali zien hoe je de waarde van UX-werk
+          meetbaar maakt. Designkeuzes voelen vaak intuïtief, maar zodra je ze
+          aan cijfers koppelt, word je er ook verantwoordelijk voor. Dat besef
+          veranderde hoe ik naar mijn eigen werk kijk. Hieronder vat ik de
+          belangrijkste inzichten samen die ik heb meegenomen.
         </p>
+        <p data-lang="en">
+          In this workshop, Vitali showed how you make the value of UX work
+          measurable. Design choices often feel intuitive, but the moment you
+          tie them to numbers, you also become accountable for them. That
+          realization changed the way I look at my own work. Below I summarize
+          the key takeaways I came away with.
+        </p>
+
+        <h3><span data-lang="nl">Behoeften versus doelen van de gebruiker</span><span data-lang="en">User needs versus user goals</span></h3>
         <img src="img/workshop1.png" alt="Functionele en niet-functionele eisen" />
-        <p>
-          Functioneel als je functies moet implementeren, niet-functioneel is
-          voor naleving.
+        <p data-lang="nl">
+          Een belangrijk onderscheid dat me bijbleef: wat een gebruiker
+          <em>nodig heeft</em> is niet hetzelfde als wat een gebruiker
+          <em>denkt</em> te willen. Functionele eisen gaan over de functies die
+          je bouwt; niet-functionele eisen gaan over zaken als naleving en
+          kwaliteit. Door dat scherp te houden, ontwerp je voor de echte
+          behoefte in plaats van voor de eerste wens die wordt uitgesproken.
+        </p>
+        <p data-lang="en">
+          An important distinction that stuck with me: what a user
+          <em>needs</em> is not the same as what a user <em>thinks</em> they
+          want. Functional requirements are about the features you build;
+          non-functional requirements cover things like compliance and quality.
+          Keeping that sharp lets you design for the real need rather than the
+          first wish that gets voiced.
         </p>
         <img src="img/workshop2.png" alt="Behoeften en doelen van de gebruiker" />
-        <p>
-          <strong>Behoeften van de gebruiker:</strong> wat de gebruiker
-          daadwerkelijk nodig heeft.
-        </p>
-        <p>
-          <strong>Doelen van de gebruiker:</strong> de gebruiker denkt vaak dat
-          hij dit wil doen.
-        </p>
 
-        <h3>Waarde-architectuur</h3>
-        <p>
-          Een model om de acties van het bedrijf te koppelen aan de waarde die
-          het creëert voor klanten en aan bedrijfsresultaten. Ontworpen om de
-          'waardekloof' te overbruggen tussen het werk van het team en de
-          meetbare impact ervan.
-        </p>
-        <p>
-          Functies moeten aan het publiek worden geleverd, want als een
-          gebruiker ze niet kan vinden, worden ze waardeloos.
-        </p>
-        <p>
-          North Star maakt deel uit van de belangrijkste KPI's van het bedrijf.
-        </p>
+        <h3><span data-lang="nl">Waarde-architectuur</span><span data-lang="en">Value architecture</span></h3>
         <img src="img/workshop3.png" alt="Waarde-architectuur model" />
-        <p>
-          De gebruikersreis is altijd lineair, terwijl de echte wereld dat niet
-          is; die is rommelig.
+        <p data-lang="nl">
+          Wat ik hiervan meenam: een feature heeft pas waarde als gebruikers hem
+          kunnen vinden en gebruiken. Vitali liet zien hoe je de 'waardekloof'
+          overbrugt tussen wat een team bouwt en de meetbare impact daarvan, en
+          hoe je dat koppelt aan de North Star en de KPI's van een bedrijf. Wat
+          me het meest bijbleef: de gebruikersreis ziet er op papier lineair
+          uit, maar in werkelijkheid is die rommelig — en daar moet je je
+          metingen op aanpassen.
         </p>
-        <p>
-          Bouw een band op met het verkoopteam, aangezien zij een goede band met
-          en kennis van de klant hebben.
+        <p data-lang="en">
+          What I took from this: a feature only has value once users can find
+          and use it. Vitali showed how you bridge the 'value gap' between what a
+          team builds and its measurable impact, and how you tie that to a
+          company's North Star and KPIs. What stuck with me most: the user
+          journey looks linear on paper, but in reality it's messy — and your
+          measurements have to account for that.
         </p>
 
-        <h3>Rendement op investering (ROI)</h3>
-        <p>
-          Het management wil doorgaans een ROI &gt; 15% zien. Rendement is meer
-          omzet, maar ook lagere kosten, uitgaven en risico's. Positioneer de
-          waarde die je creëert aan de hand van de waarde die je hebt geleverd.
-          De ROI moet minimaal 15% zijn, maar hoe hoger, hoe beter.
-        </p>
+        <h3><span data-lang="nl">Return on investment (ROI)</span><span data-lang="en">Return on investment (ROI)</span></h3>
         <img src="img/workshop4.png" alt="ROI berekening" />
-        <p>
-          Je kunt altijd ingaan op die twee: omzetverhoging en kostenverlaging.
-          Dat is de basis voor een goed gesprek over ROI.
+        <p data-lang="nl">
+          Management denkt in rendement. Meestal is het doel een ROI boven de
+          15%, en die haal je door omzet te verhogen of kosten te verlagen. Ik
+          leerde hoe je dat onderbouwt met concrete cijfers — zoals bespaarde
+          gebruikersuren en supporturen — in plaats van te leunen op
+          ijdelheidsstatistieken zoals sessieduur. Voor mij was dit het grootste
+          inzicht: je moet de waarde van je werk kunnen vertalen naar de taal
+          van het bedrijf.
+        </p>
+        <p data-lang="en">
+          Management thinks in terms of returns. The goal is usually an ROI
+          above 15%, which you reach by increasing revenue or reducing costs. I
+          learned how to back that up with concrete figures — such as saved user
+          hours and support hours — instead of leaning on vanity metrics like
+          session duration. For me this was the biggest insight: you need to be
+          able to translate the value of your work into the language of the
+          business.
         </p>
 
-        <h4>Hoe kom je aan de verwachte gebruikersuren?</h4>
-        <p>
-          Je moet eerst nagaan hoe lang het duurt voordat een gebruiker bereikt
-          waar je nu bent. Stel dat je 5000 gebruikers hebt en zij moeten het 10
-          keer per maand gebruiken en dat kost hen ongeveer 1 uur. Als we de taak
-          optimaliseren, controleren we opnieuw hoeveel tijd ze nu nodig hebben
-          en hoeveel tijd we hebben bespaard.
+        <h3><span data-lang="nl">Belanghebbenden overtuigen</span><span data-lang="en">Convincing stakeholders</span></h3>
+        <p data-lang="nl">
+          Als een belanghebbende het niet met je eens is, ligt dat zelden aan
+          het ontwerp zelf. Vaak zijn ze het oneens over het probleem, over je
+          aanpak, of twijfelen ze of de oplossing het doel wel haalt. Door dat
+          onderscheid te maken kun je een gesprek veel gerichter voeren in
+          plaats van langs elkaar heen te praten.
+        </p>
+        <p data-lang="en">
+          When a stakeholder disagrees with you, it's rarely about the design
+          itself. Often they disagree about the problem, about your approach, or
+          they doubt whether the solution will actually reach the goal. Making
+          that distinction lets you have a much more focused conversation instead
+          of talking past each other.
         </p>
 
-        <h4>Hoe kom je aan supporturen?</h4>
-        <p>
-          Je vraagt hen hoeveel tijd ze nodig hebben om een probleem met de
-          gebruikers op te lossen — dat is gewoon een vraag. De tweede vraag is:
-          hoe vaak komt het voor?
+        <h3><span data-lang="nl">Wat ik heb meegenomen</span><span data-lang="en">What I took away</span></h3>
+        <p data-lang="nl">
+          Mijn belangrijkste les: design dat je niet kunt onderbouwen, is
+          moeilijk te verdedigen. Door te leren hoe je impact meet, kan ik mijn
+          keuzes uitleggen in een taal die ook buiten het designteam wordt
+          begrepen — en dat maakt mijn werk overtuigender.
         </p>
-        <p>
-          De sessieduur doet er niet echt toe, het is een ijdelheidsstatistiek.
-        </p>
-        <p>
-          Om de acceptatiegraad te controleren, kijk je terug naar wat er in het
-          verleden is gebeurd. Voor een nevenfunctie is alles rond de 20% al
-          hoog, maar voor een kernfunctie is 40–60% heel gebruikelijk. Zelfs als
-          het verouderd is, kun je het altijd aan iets koppelen.
-        </p>
-
-        <h3>Belanghebbenden</h3>
-        <p>
-          Zijn ze het oneens met het probleem, met de manier waarop je het
-          probleem aanpakt, of denken ze dat we het doel niet zullen bereiken
-          door dat probleem op te lossen?
+        <p data-lang="en">
+          My biggest lesson: design you can't substantiate is hard to defend. By
+          learning how to measure impact, I can explain my choices in a language
+          that's understood outside the design team too — and that makes my work
+          more convincing.
         </p>
       </div>
     </main>

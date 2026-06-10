@@ -1,33 +1,59 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Matching - Julius Gerth</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="lang.js"></script>
   </head>
   <body>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
-        <li><a href="index.html#over-mij">Over mij</a></li>
-        <li><a href="index.html#projecten">Projecten</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#over-mij"><span data-lang="nl">Over mij</span><span data-lang="en">About</span></a></li>
+        <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
+        <li><a href="index.html#contact"><span data-lang="nl">Contact</span><span data-lang="en">Contact</span></a></li>
+        <li class="lang-item">
+          <button type="button" class="lang-toggle" aria-label="Switch language / Taal wisselen">
+            <span data-lang="nl">EN</span><span data-lang="en">NL</span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <main>
       <div class="project-detail">
-        <a href="index.html#projecten" class="back-link">← Terug naar projecten</a>
+        <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
         <h1>Movie Matching</h1>
-        <h2>Description</h2>
-        <p>
-          Movie Matching is a web application that helps users discover movies and TV shows. Users can receive personalized recommendations based on their favorite genres and save their favorite titles to their account. The project leverages the TMDB API to fetch up-to-date movie and series data.
+
+        <h2><span data-lang="nl">Beschrijving</span><span data-lang="en">Description</span></h2>
+        <p data-lang="nl">
+          Movie Matching is een webapplicatie die gebruikers helpt films en
+          tv-series te ontdekken. Gebruikers krijgen persoonlijke aanbevelingen
+          op basis van hun favoriete genres en kunnen hun favoriete titels
+          opslaan in hun account. Het project gebruikt de TMDB-API om actuele
+          film- en seriedata op te halen.
+        </p>
+        <p data-lang="en">
+          Movie Matching is a web application that helps users discover movies
+          and TV shows. Users can receive personalized recommendations based on
+          their favorite genres and save their favorite titles to their account.
+          The project leverages the TMDB API to fetch up-to-date movie and
+          series data.
         </p>
         <img src="img/moviematch.png" alt="Movie Matching overzicht" />
 
-        <h3>Features</h3>
-        <ul>
+        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
+        <ul data-lang="nl">
+          <li>Trending en Now Playing: blader door populaire en nu draaiende films.</li>
+          <li>Persoonlijke aanbevelingen: krijg filmsuggesties op basis van gekozen genres.</li>
+          <li>Zoekfunctie: zoek naar films en tv-series via een geïntegreerde zoekbalk.</li>
+          <li>Accountbeheer: gebruikers kunnen zich registreren, inloggen en hun profiel beheren.</li>
+          <li>Favorieten: gebruikers kunnen een lijst met favoriete films opslaan en beheren.</li>
+          <li>Profielfoto's: gebruikers kunnen hun eigen profielfoto uploaden en aanpassen.</li>
+        </ul>
+        <ul data-lang="en">
           <li>Trending and Now Playing: Browse popular and currently playing movies.</li>
           <li>Personalized Recommendations: Get movie suggestions based on selected genres.</li>
           <li>Search Functionality: Search for movies and TV shows using an integrated search bar.</li>
@@ -36,8 +62,16 @@
           <li>Profile Picture Uploads: Users can upload and customize their profile pictures.</li>
         </ul>
 
-        <h3>Technologies Used</h3>
-        <ul>
+        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
+        <ul data-lang="nl">
+          <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
+          <li>Backend: Node.js, Express.js</li>
+          <li>Database: MongoDB</li>
+          <li>Authenticatie: Bcrypt voor het hashen van wachtwoorden en Express-session voor sessiebeheer</li>
+          <li>API: TMDB-API voor film- en seriedata</li>
+          <li>Bestandsverwerking: Multer voor het uploaden van profielfoto's</li>
+        </ul>
+        <ul data-lang="en">
           <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
           <li>Backend: Node.js, Express.js</li>
           <li>Database: MongoDB</li>
@@ -46,8 +80,15 @@
           <li>File Handling: Multer for profile picture uploads</li>
         </ul>
 
-        <h3>Key Learning Outcomes</h3>
-        <ul>
+        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">Key Learning Outcomes</span></h3>
+        <ul data-lang="nl">
+          <li>Werken met externe API's (TMDB) en het verwerken van JSON-data.</li>
+          <li>Het implementeren van gebruikersauthenticatie en sessiebeheer.</li>
+          <li>MongoDB gebruiken om gebruikersdata en favorieten op te slaan.</li>
+          <li>Pagina's dynamisch renderen met EJS.</li>
+          <li>Bestandsuploads afhandelen en deze veilig opslaan.</li>
+        </ul>
+        <ul data-lang="en">
           <li>Working with external APIs (TMDB) and processing JSON data.</li>
           <li>Implementing user authentication and session management.</li>
           <li>Using MongoDB to store user data and favorites.</li>
