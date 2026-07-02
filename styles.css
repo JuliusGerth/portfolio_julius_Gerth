@@ -82,6 +82,18 @@ html[lang='en'] [data-lang='nl'] { display: none !important; }
 html:not([lang='en']) [data-lang='en'] { display: none !important; }
 
 
+/* ── Scroll-voortgangsbalk ───────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-yellow));
+  z-index: 300;
+  pointer-events: none;
+}
+
 /* ── Navigation ─────────────────────────────────── */
 nav {
   position: sticky;
@@ -259,7 +271,15 @@ main {
   object-fit: cover;
   flex-shrink: 0;
   box-shadow: var(--shadow-md);
-  animation: photo-enter 0.8s ease 0.1s both;
+  /* 'backwards' i.p.v. 'both': na afloop laat de animatie transform los,
+     anders zou de hover-transform hieronder nooit werken */
+  animation: photo-enter 0.8s ease 0.1s backwards;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-photo:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
 }
 
 @keyframes photo-enter {
@@ -281,10 +301,17 @@ main {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.3rem;
-  background: linear-gradient(135deg, #ffffff 35%, #ffd700);
+  background: linear-gradient(120deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradient-slide 6s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-slide {
+  from { background-position: 0% center; }
+  to   { background-position: 100% center; }
 }
 
 .hero-tagline {
@@ -326,6 +353,24 @@ main {
 .hero-info li:hover {
   background: rgba(255, 215, 0, 0.18);
   transform: translateY(-1px);
+}
+
+.hero-info li.hero-badge {
+  background: var(--accent-yellow);
+  color: #002d19;
+  font-weight: 700;
+  border-color: transparent;
+  animation: badge-pulse 2.5s ease-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(242, 194, 0, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(242, 194, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 194, 0, 0); }
+}
+
+.hero-info li.hero-badge:hover {
+  background: var(--accent-yellow-soft);
 }
 
 /* ── Stats strip ─────────────────────────────────── */
@@ -392,6 +437,39 @@ main {
   margin-bottom: 1rem;
 }
 
+.about p {
+  margin-bottom: 1rem;
+}
+
+.about p a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ── Stage-oproep ────────────────────────────────── */
+.stage-callout {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent-yellow);
+  border-radius: 8px;
+}
+
+.stage-callout p {
+  margin-bottom: 0;
+}
+
+.callout-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.callout-actions .btn {
+  margin-top: 0;
+}
+
 /* ── Button ──────────────────────────────────────── */
 .btn {
   display: inline-block;
@@ -407,6 +485,27 @@ main {
   cursor: pointer;
   font-family: inherit;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+}
+
+.btn:hover::before {
+  animation: btn-shine 0.7s ease;
+}
+
+@keyframes btn-shine {
+  to { left: 130%; }
 }
 
 .btn:hover {
@@ -427,39 +526,32 @@ main {
   border-radius: 4px;
 }
 
-/* ── Projects page ───────────────────────────────── */
-.page-header {
-  padding: 3rem 0 1rem;
-}
-
-.page-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.page-header p {
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-}
-
-.section-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 2rem 0 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
-}
-
+/* ── Projects section ────────────────────────────── */
 .section-heading {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1.25rem;
   display: inline-block;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--accent-yellow);
+  position: relative;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-yellow), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s ease 0.3s;
+}
+
+.section-heading.is-visible::after {
+  transform: scaleX(1);
 }
 
 .project-grid {
@@ -571,6 +663,12 @@ main {
   font-size: 0.85rem;
   color: var(--accent);
   font-weight: 500;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .project-card-link-text {
+  transform: translateX(5px);
 }
 
 /* ── Scroll reveal ───────────────────────────────── */

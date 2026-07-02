@@ -3,3 +3,7 @@
   opacity: 1 !important;
   transform: none !important;
 }
+
+.section-heading::after {
+  transform: scaleX(1) !important;
+}

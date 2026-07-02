@@ -6,7 +6,7 @@
     <title>Julius Gerth - Portfolio</title>
     <meta
       name="description"
-      content="Portfolio van Julius Gerth, derdejaarsstudent Communication & Multimedia Design aan de HvA. Bekijk mijn projecten op het gebied van UX-design en frontend-development."
+      content="Portfolio van Julius Gerth, vierdejaarsstudent Communication & Multimedia Design aan de HvA. Op zoek naar een afstudeerstage vanaf september 2026 op het snijvlak van UX-design en frontend-development."
     />
     <meta name="theme-color" content="#004225" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -14,7 +14,7 @@
     <meta property="og:title" content="Julius Gerth - Portfolio" />
     <meta
       property="og:description"
-      content="Portfolio van Julius Gerth, student Communication & Multimedia Design. UX-design en frontend-development."
+      content="Portfolio van Julius Gerth, student Communication & Multimedia Design. Op zoek naar een afstudeerstage vanaf september 2026."
     />
     <meta property="og:url" content="https://juliusgerth.github.io/portfolio_julius_Gerth/" />
     <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/linkedin-foto.jpg" />
@@ -24,6 +24,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
@@ -66,6 +67,9 @@
               built.
             </p>
             <ul class="hero-info">
+              <li class="hero-badge">
+                <span data-lang="nl">Op zoek naar een afstudeerstage · sept 2026</span><span data-lang="en">Looking for a graduation internship · Sept 2026</span>
+              </li>
               <li>julger04@gmail.com</li>
               <li><span data-lang="nl">Hoofddorp, Nederland</span><span data-lang="en">Hoofddorp, the Netherlands</span></li>
             </ul>
@@ -79,7 +83,7 @@
           <span class="stat-label"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></span>
         </div>
         <div class="stat">
-          <span class="stat-number">3</span>
+          <span class="stat-number">4</span>
           <span class="stat-label"><span data-lang="nl">Jaar CMD</span><span data-lang="en">Years of CMD</span></span>
         </div>
       </div>
@@ -87,23 +91,56 @@
       <section class="card about" id="over-mij" data-reveal>
         <h2><span data-lang="nl">Over mij</span><span data-lang="en">About me</span></h2>
         <p data-lang="nl">
-          Mijn naam is Julius Gerth, en ik ben een derdejaarsstudent
-          Communication &amp; Multimedia Design aan de Hogeschool van Amsterdam.
-          Ik werk graag in teams, maar kan ook prima zelfstandig werken. Ik ben
-          een creatieve student die graag nieuwe dingen leert en uitprobeert.
+          Mijn naam is Julius Gerth en ik ben vierdejaarsstudent Communication
+          &amp; Multimedia Design aan de Hogeschool van Amsterdam. Ik zit het
+          liefst op het snijvlak van ontwerp en techniek: een interface
+          bedenken én hem daarna zelf werkend bouwen.
         </p>
         <p data-lang="en">
-          My name is Julius Gerth, and I'm a third-year Communication &amp;
+          My name is Julius Gerth and I'm a fourth-year Communication &amp;
           Multimedia Design student at the Amsterdam University of Applied
-          Sciences. I enjoy working in teams, but I'm just as comfortable
-          working independently. I'm a creative student who likes to learn and
-          try out new things.
+          Sciences. I like to work where design meets technology: coming up
+          with an interface and then building it myself.
         </p>
-        <a href="cv-julius.pdf" class="btn" download><span data-lang="nl">Mijn CV</span><span data-lang="en">My CV</span></a>
+        <p data-lang="nl">
+          Buiten school vind je me op het rugbyveld of achter het stuur — ik
+          ben onderdeel van een simrace-esportteam. Daarnaast speel ik graag
+          strategiegames, juist omdat ze me dwingen om in de meest stressvolle
+          situaties helder te blijven denken. Dat is een vaardigheid die
+          tijdens deadlines en hackathons verrassend goed van pas komt. Verder
+          fotografeer ik graag en kijk ik veel films — die liefde vind je
+          terug in mijn <a href="movie_matching.html">Movie Matching-project</a>.
+        </p>
+        <p data-lang="en">
+          Outside of school you'll find me on the rugby pitch or behind the
+          wheel — I'm part of a sim racing esports team. I also enjoy strategy
+          games, precisely because they force me to keep thinking clearly in
+          the most stressful situations. That's a skill that comes in
+          surprisingly handy during deadlines and hackathons. Beyond that I
+          love photography and film — a passion you'll recognise in my
+          <a href="movie_matching.html">Movie Matching project</a>.
+        </p>
+        <div class="stage-callout">
+          <p data-lang="nl">
+            <strong>Op zoek naar een afstudeerstage</strong> — vanaf september
+            2026, op het snijvlak van UX-design en frontend-development. Denk
+            je dat ik bij jouw team pas? Ik hoor graag van je.
+          </p>
+          <p data-lang="en">
+            <strong>Looking for a graduation internship</strong> — starting
+            September 2026, at the intersection of UX design and frontend
+            development. Think I'd be a good fit for your team? I'd love to
+            hear from you.
+          </p>
+          <div class="callout-actions">
+            <a href="mailto:julger04@gmail.com" class="btn"><span data-lang="nl">Mail mij</span><span data-lang="en">Email me</span></a>
+            <a href="cv-julius.pdf" class="btn" download><span data-lang="nl">Mijn CV</span><span data-lang="en">My CV</span></a>
+          </div>
+        </div>
       </section>
 
       <section id="projecten">
-        <h2 class="section-heading"><span data-lang="nl">Mijn projecten</span><span data-lang="en">My projects</span></h2>
+        <h2 class="section-heading" data-reveal><span data-lang="nl">Mijn projecten</span><span data-lang="en">My projects</span></h2>
         <ul class="project-grid">
           <li class="project-card" data-reveal>
             <a href="designsystem.html" class="project-card-link">

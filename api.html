@@ -40,12 +40,16 @@
       <div class="project-detail">
         <a href="index.html#projecten" class="back-link"><span data-lang="nl">← Terug naar projecten</span><span data-lang="en">← Back to projects</span></a>
         <h1>Solar System</h1>
-        <img
-          src="img/apisolar.png"
-          alt="Screenshot van de 3D solar system-website"
-          width="1280"
-          height="800"
-        />
+        <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+        <picture>
+          <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+          <img
+            src="img/apisolar.png"
+            alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
+            width="1280"
+            height="800"
+          />
+        </picture>
 
         <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
         <p data-lang="nl">

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sabrinaz35.github.io)",
+      "PowerShell($r = Invoke-WebRequest \"https://sabrinaz35.github.io/portfolio-2025/\" -UseBasicParsing; $r.Content.Length; $r.Content | Out-File \"$env:TEMP\\\\sabrina.html\" -Encoding utf8)",
+      "Read(//c/Users/Julge/AppData/Local/Temp/**)",
+      "PowerShell($r = Invoke-WebRequest \"https://sabrinaz35.github.io/portfolio-2025/style.css\" -UseBasicParsing; $r.Content.Length; $r.Content | Out-File \"$env:TEMP\\\\sabrina.css\" -Encoding utf8)",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell($sw = [Diagnostics.Stopwatch]::StartNew\\(\\); try { $r = Invoke-WebRequest \"https://solar-julius.onrender.com/\" -UseBasicParsing -TimeoutSec 120; \"Status: $\\($r.StatusCode\\) na $\\([int]$sw.Elapsed.TotalSeconds\\)s, lengte: $\\($r.Content.Length\\)\" } catch { \"FAIL na $\\([int]$sw.Elapsed.TotalSeconds\\)s: $\\($_.Exception.Message\\)\" })",
+      "PowerShell($edge = @\\(\"$env:ProgramFiles \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"$env:ProgramFiles\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\) | Where-Object { Test-Path $_ } | Select-Object -First 1; $edge)",
+      "PowerShell(& \"C:\\\\Users\\\\Julge\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Julge-Documents-cmd-portfolio-portfolio-julius-Gerth\\\\0cc37147-9b59-4972-b949-fa0b268b7959\\\\scratchpad\\\\capture-solar.ps1\")",
+      "PowerShell(& \"C:\\\\Users\\\\Julge\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Julge-Documents-cmd-portfolio-portfolio-julius-Gerth\\\\0cc37147-9b59-4972-b949-fa0b268b7959\\\\scratchpad\\\\encode-solar.ps1\")",
+      "PowerShell(& \"C:\\\\Users\\\\Julge\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Julge-Documents-cmd-portfolio-portfolio-julius-Gerth\\\\0cc37147-9b59-4972-b949-fa0b268b7959\\\\scratchpad\\\\encode-solar-opt.ps1\")"
+    ]
+  }
+}

@@ -41,11 +41,16 @@
   const nav = document.querySelector('nav');
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const backTop = document.getElementById('backTop');
+  const scrollProgress = document.getElementById('scrollProgress');
 
-  window.addEventListener('scroll', () => {
+  function onScroll() {
     nav.classList.toggle('scrolled', window.scrollY > 20);
     backTop.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.width = max > 0 ? (window.scrollY / max) * 100 + '%' : '0%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
