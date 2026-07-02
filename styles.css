@@ -1,3 +1,12 @@
+/* Zelf-gehost koppenfont (SIL Open Font License, zie fonts/OFL-space-grotesk.txt) */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('fonts/space-grotesk.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #F8FAFC;
   --surface: #FFFFFF;
@@ -9,6 +18,7 @@
   --accent-yellow: #F2C200;
   --accent-yellow-soft: #FFE375;
   --border: #E2E8F0;
+  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
   --radius: 12px;
@@ -40,6 +50,31 @@ body {
 @keyframes page-enter {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3,
+.nav-logo,
+.stat-number {
+  font-family: var(--font-heading);
+}
+
+/* ── Skip-link (toetsenbord/screenreader) ────────── */
+.skip-link {
+  position: fixed;
+  top: -4rem;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  z-index: 200;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 /* ── Language switching (EN / NL) ────────────────── */
@@ -798,5 +833,25 @@ footer a:hover {
   .back-top {
     bottom: 1.25rem;
     right: 1.25rem;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

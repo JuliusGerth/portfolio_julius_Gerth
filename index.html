@@ -4,11 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Julius Gerth - Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio van Julius Gerth, derdejaarsstudent Communication & Multimedia Design aan de HvA. Bekijk mijn projecten op het gebied van UX-design en frontend-development."
+    />
+    <meta name="theme-color" content="#004225" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Julius Gerth - Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio van Julius Gerth, student Communication & Multimedia Design. UX-design en frontend-development."
+    />
+    <meta property="og:url" content="https://juliusgerth.github.io/portfolio_julius_Gerth/" />
+    <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/linkedin-foto.jpg" />
     <link rel="stylesheet" href="styles.css" />
     <noscript><link rel="stylesheet" href="noscript.css" /></noscript>
     <script src="lang.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
     <nav>
       <a href="index.html" class="nav-logo">Julius Gerth</a>
       <ul class="nav-links">
@@ -23,7 +38,7 @@
       </ul>
     </nav>
 
-    <main>
+    <main id="main">
       <section class="hero">
         <div class="hero-bg">
           <div class="blob blob-1"></div>
@@ -32,9 +47,11 @@
         </div>
         <div class="hero-inner">
           <img
-            src="img/linkedingfoto.jpg"
+            src="img/linkedin-foto.jpg"
             alt="Portretfoto van Julius Gerth"
             class="hero-photo"
+            width="480"
+            height="360"
           />
           <div class="hero-content">
             <h1>Julius Gerth</h1>
@@ -108,7 +125,13 @@
           </li>
           <li class="project-card" data-reveal>
             <a href="workshop.html" class="project-card-link">
-              <div class="project-card-img-placeholder">Workshop</div>
+              <img
+                src="img/workshop3.jpg"
+                alt="Slide over waarde-architectuur uit de UX-workshop"
+                width="996"
+                height="560"
+                loading="lazy"
+              />
               <div class="project-card-body">
                 <h3><span data-lang="nl">UX-workshop met Vitali</span><span data-lang="en">UX workshop with Vitali</span></h3>
                 <p data-lang="nl">
@@ -126,8 +149,11 @@
           <li class="project-card" data-reveal>
             <a href="browser_tech.html" class="project-card-link">
               <img
-                src="https://smartjulger.github.io/meesterschap/images/projecten/bt.png"
-                alt="Browser Tech"
+                src="img/browsertech.png"
+                alt="Screenshot van de Browser Tech-webapplicatie"
+                width="1280"
+                height="800"
+                loading="lazy"
               />
               <div class="project-card-body">
                 <h3>Browser Tech</h3>
@@ -146,8 +172,11 @@
           <li class="project-card" data-reveal>
             <a href="hackathon.html" class="project-card-link">
               <img
-                src="https://smartjulger.github.io/meesterschap/images/projecten/hackaton.png"
-                alt="Hackathon"
+                src="img/hackathon.jpg"
+                alt="Screenshot van de hackathon-website"
+                width="1280"
+                height="800"
+                loading="lazy"
               />
               <div class="project-card-body">
                 <h3>Hackathon</h3>
@@ -167,10 +196,13 @@
             <a href="api.html" class="project-card-link">
               <img
                 src="img/apisolar.png"
-                alt="API"
+                alt="Screenshot van de 3D solar system-website"
+                width="1280"
+                height="800"
+                loading="lazy"
               />
               <div class="project-card-body">
-                <h3>API</h3>
+                <h3><span data-lang="nl">Solar System — 3D-website met API</span><span data-lang="en">Solar System — 3D website with API</span></h3>
                 <p data-lang="nl">
                   Ik heb geleerd hoe je een volledige 3D-website bouwt en wat de
                   echte kracht van JavaScript is.
@@ -185,7 +217,13 @@
           </li>
           <li class="project-card" data-reveal>
             <a href="beyond.html" class="project-card-link">
-              <img src="img/rest.png" alt="Rest Quest" />
+              <img
+                src="img/rest.jpg"
+                alt="Foto van het Rest Quest-product"
+                width="480"
+                height="643"
+                loading="lazy"
+              />
               <div class="project-card-body">
                 <h3>Rest Quest</h3>
                 <p data-lang="nl">
@@ -202,7 +240,13 @@
           </li>
           <li class="project-card" data-reveal>
             <a href="movie_matching.html" class="project-card-link">
-              <img src="img/moviematch.png" alt="Movie Matching" />
+              <img
+                src="img/moviematch.jpg"
+                alt="Screenshot van de Movie Matching-webapp"
+                width="1400"
+                height="715"
+                loading="lazy"
+              />
               <div class="project-card-body">
                 <h3>Movie Matching</h3>
                 <p data-lang="nl">Een webapp voor het ontdekken van films en tv-shows.</p>
@@ -220,7 +264,7 @@
           <input
             type="hidden"
             name="_next"
-            value="https://julius-gerth.github.io/portfolio_julius_Gerth/"
+            value="https://juliusgerth.github.io/portfolio_julius_Gerth/"
           />
           <div class="form-group">
             <label for="name"><span data-lang="nl">Naam</span><span data-lang="en">Name</span></label>
