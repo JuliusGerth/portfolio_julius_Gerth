@@ -83,15 +83,26 @@ html:not([lang='en']) [data-lang='en'] { display: none !important; }
 
 
 /* ── Scroll-voortgangsbalk ───────────────────────── */
+/* Scroll-gedreven CSS-animatie; script.js springt alleen bij
+   in browsers zonder animation-timeline-ondersteuning. */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-yellow));
   z-index: 300;
   pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progress-grow linear;
+  animation-timeline: scroll();
+}
+
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 /* ── Navigation ─────────────────────────────────── */
@@ -212,6 +223,7 @@ main {
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  transition: transform 0.3s ease-out;
 }
 
 .blob {
@@ -297,35 +309,60 @@ main {
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 0.3rem;
-  background: linear-gradient(120deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-slide 6s ease-in-out infinite alternate;
+  color: #ffffff;
 }
 
-@keyframes gradient-slide {
-  from { background-position: 0% center; }
-  to   { background-position: 100% center; }
+/* Letter-voor-letter entrance, volledig in CSS.
+   Elke letter heeft in de HTML een --i; die stuurt de delay
+   én de kleur (wit -> goud over de hele naam). */
+.hero-content h1 .word {
+  display: inline-block;
 }
 
+.hero-content h1 .letter {
+  display: inline-block;
+  animation: letter-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.2s + var(--i) * 0.045s);
+  color: color-mix(in srgb, #ffd700 calc(var(--i) * 10%), #ffffff);
+}
+
+@keyframes letter-in {
+  from { opacity: 0; transform: translateY(0.6em) rotate(6deg); }
+  to   { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+/* Roterende tagline, volledig in CSS: verticale carrousel.
+   Laatste item is een kopie van het eerste voor een naadloze loop. */
 .hero-tagline {
   font-size: 1.05rem;
   color: #ffd700;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  min-height: 1.7em;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  height: 1.7em;
+  overflow: hidden;
 }
 
-.hero-tagline.switching {
-  opacity: 0;
-  transform: translateY(-6px);
+.tagline-rotor {
+  display: block;
+  animation: tagline-cycle 11.2s infinite;
+}
+
+.tagline-item {
+  display: block;
+  height: 1.7em;
+  line-height: 1.7;
+}
+
+@keyframes tagline-cycle {
+  0%, 21%    { transform: translateY(0); }
+  25%, 46%   { transform: translateY(-1.7em); }
+  50%, 71%   { transform: translateY(-3.4em); }
+  75%, 96%   { transform: translateY(-5.1em); }
+  100%       { transform: translateY(-6.8em); }
 }
 
 .hero-desc {

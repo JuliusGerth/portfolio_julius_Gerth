@@ -1,7 +1,40 @@
 // Portfolio Julius Gerth
+// De letter-animatie, roterende tagline en scroll-voortgangsbalk zijn pure CSS;
+// hier staat alleen wat écht JavaScript nodig heeft (muispositie en observers).
 (function () {
   // Respecteer de animatie-voorkeur van de bezoeker.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Hero: blobs volgen de muis subtiel ───────────
+  const hero = document.querySelector('.hero');
+  const heroBg = document.querySelector('.hero-bg');
+  if (hero && heroBg && !reducedMotion) {
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      heroBg.style.transform = `translate(${(x * 26).toFixed(1)}px, ${(y * 18).toFixed(1)}px)`;
+    });
+    hero.addEventListener('mouseleave', () => {
+      heroBg.style.transform = '';
+    });
+  }
+
+  // ── Projectkaarten: 3D-tilt met de muis ──────────
+  if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform =
+          `perspective(800px) translateY(-4px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
 
   // ── Counter animation ────────────────────────────
   function countUp(el, target) {
@@ -41,13 +74,20 @@
   const nav = document.querySelector('nav');
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const backTop = document.getElementById('backTop');
+
+  // Voortgangsbalk is scroll-gedreven CSS; alleen bijspringen
+  // in browsers die animation-timeline nog niet kennen.
   const scrollProgress = document.getElementById('scrollProgress');
+  const progressNeedsJs = scrollProgress &&
+    !(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'));
 
   function onScroll() {
     nav.classList.toggle('scrolled', window.scrollY > 20);
     backTop.classList.toggle('visible', window.scrollY > 300);
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    scrollProgress.style.width = max > 0 ? (window.scrollY / max) * 100 + '%' : '0%';
+    if (progressNeedsJs) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -67,39 +107,4 @@
   backTop.addEventListener('click', () =>
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' })
   );
-
-  // ── Rotating tagline (tweetalig) ─────────────────
-  const tagline = document.getElementById('heroTagline');
-  const taglineSets = {
-    nl: [
-      'Communication & Multimedia Design student',
-      'UX-designer',
-      'Frontend-developer',
-      'Creatieve denker'
-    ],
-    en: [
-      'Communication & Multimedia Design student',
-      'UX Designer',
-      'Frontend Developer',
-      'Creative thinker'
-    ]
-  };
-  const phrasesFor = () => taglineSets[document.documentElement.lang] || taglineSets.nl;
-  let i = 0;
-  tagline.textContent = phrasesFor()[i];
-  // Bij wisselen van taal direct de huidige zin in de juiste taal tonen.
-  document.addEventListener('langchange', () => {
-    tagline.textContent = phrasesFor()[i];
-  });
-  if (!reducedMotion) {
-    setInterval(() => {
-      tagline.classList.add('switching');
-      setTimeout(() => {
-        const phrases = phrasesFor();
-        i = (i + 1) % phrases.length;
-        tagline.textContent = phrases[i];
-        tagline.classList.remove('switching');
-      }, 300);
-    }, 2800);
-  }
 })();
