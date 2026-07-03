@@ -11,7 +11,9 @@
   --bg: #F8FAFC;
   --surface: #FFFFFF;
   --text: #0F172A;
-  --text-muted: #64748B;
+  /* #475569 i.p.v. #64748B: haalt WCAG AAA op wit (7,6:1) en blijft
+     leesbaar op de semi-transparante gescrolde nav boven de groene hero */
+  --text-muted: #475569;
   --accent: #004225;
   --accent-hover: #00301b;
   --accent-light: #DBE8E1;
@@ -850,17 +852,37 @@ main {
 .back-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  color: var(--text-muted);
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
   text-decoration: none;
   font-size: 0.9rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  transition: color 0.2s, gap 0.2s;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.back-link .back-arrow {
+  transition: transform 0.25s ease;
 }
 
 .back-link:hover {
-  color: var(--accent);
-  gap: 0.65rem;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  transform: translateX(-2px);
+}
+
+.back-link:hover .back-arrow {
+  transform: translateX(-3px);
+}
+
+.back-link:active {
+  transform: translateX(-2px) scale(0.97);
 }
 
 /* ── Footer ──────────────────────────────────────── */
