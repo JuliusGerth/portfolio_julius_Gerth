@@ -584,13 +584,13 @@ main {
   height: 3px;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--accent-yellow), var(--accent));
-  transform: scaleX(0);
+  transform: scaleX(1);
   transform-origin: left;
   transition: transform 0.7s ease 0.3s;
 }
 
-.section-heading.is-visible::after {
-  transform: scaleX(1);
+.section-heading.will-reveal::after {
+  transform: scaleX(0);
 }
 
 .project-grid {
@@ -711,15 +711,16 @@ main {
 }
 
 /* ── Scroll reveal ───────────────────────────────── */
+/* Verbergen is opt-in via JS ('will-reveal') en alleen voor wat nog onder de
+   vouw staat. Zonder JS, bij traag laden of een gemiste observer-callback
+   blijft alle content dus gewoon zichtbaar — animatie is puur verrijking. */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
+[data-reveal].will-reveal {
+  opacity: 0;
+  transform: translateY(28px);
 }
 
 .project-grid .project-card[data-reveal]:nth-child(2) { transition-delay: 0.08s; }
@@ -811,6 +812,12 @@ main {
   border-radius: var(--radius);
   border: 1px solid var(--border);
   margin: 1rem 0;
+}
+
+/* Staande foto's niet oprekken tot paginabreedte. */
+.project-detail img.img-portrait {
+  width: auto;
+  max-width: min(100%, 480px);
 }
 
 .hifi-gallery {
@@ -965,7 +972,8 @@ footer a:hover {
     transition-duration: 0.01ms !important;
   }
 
-  [data-reveal] {
+  /* Specifieker dan de will-reveal-verbergregel, zodat dit altijd wint. */
+  [data-reveal].will-reveal {
     opacity: 1;
     transform: none;
   }

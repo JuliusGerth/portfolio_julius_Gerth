@@ -53,22 +53,37 @@
   }
 
   // ── Scroll reveal ────────────────────────────────
+  // JS verbergt zélf wat het gaat onthullen ('will-reveal') en alleen wat nog
+  // onder de vouw staat. Laadt dit script traag, faalt het, of mist een
+  // observer-callback? Dan is content hooguit niet geanimeerd — nooit onzichtbaar.
+  function startCount(strip) {
+    strip.querySelectorAll('.stat-number').forEach(el =>
+      countUp(el, parseInt(el.textContent))
+    );
+  }
+
   const revealObserver = new IntersectionObserver(
     entries => entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
+        e.target.classList.remove('will-reveal');
         // Tel de getallen omhoog zodra de stats-strip in beeld komt
-        if (e.target.classList.contains('stats-strip')) {
-          e.target.querySelectorAll('.stat-number').forEach(el =>
-            countUp(el, parseInt(el.textContent))
-          );
-        }
+        if (e.target.classList.contains('stats-strip')) startCount(e.target);
         revealObserver.unobserve(e.target);
       }
     }),
     { threshold: 0.15 }
   );
-  document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    const belowFold = el.getBoundingClientRect().top > window.innerHeight;
+    if (!reducedMotion && belowFold) {
+      el.classList.add('will-reveal');
+      revealObserver.observe(el);
+    } else if (el.classList.contains('stats-strip')) {
+      // Al in beeld (of reduced motion): meteen tellen i.p.v. wachten op scroll.
+      startCount(el);
+    }
+  });
 
   // ── Nav: blur on scroll + active section ─────────
   const nav = document.querySelector('nav');

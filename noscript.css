@@ -1,9 +1,0 @@
-/* Fallback voor bezoekers zonder JavaScript: toon reveal-elementen direct */
-[data-reveal] {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-.section-heading::after {
-  transform: scaleX(1) !important;
-}

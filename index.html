@@ -19,7 +19,6 @@
     <meta property="og:url" content="https://juliusgerth.github.io/portfolio_julius_Gerth/" />
     <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/linkedin-foto.jpg" />
     <link rel="stylesheet" href="styles.css" />
-    <noscript><link rel="stylesheet" href="noscript.css" /></noscript>
     <script src="lang.js"></script>
   </head>
   <body>
@@ -151,7 +150,102 @@
 
       <section id="projecten">
         <h2 class="section-heading" data-reveal><span data-lang="nl">Mijn projecten</span><span data-lang="en">My projects</span></h2>
+        <!-- Volgorde: sterkste frontend-projecten eerst (Browser Tech, Solar System, Movie Matching) -->
         <ul class="project-grid">
+          <li class="project-card" data-reveal>
+            <a href="browser_tech.html" class="project-card-link">
+              <img
+                src="img/browsertech.png"
+                alt="Screenshot van de Browser Tech-webapplicatie"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <div class="project-card-body">
+                <h3>Browser Tech</h3>
+                <p data-lang="nl">
+                  Wat voor mij logisch is, is niet voor iedereen logisch. Je
+                  moet dingen echt duidelijk maken voor de gebruiker.
+                </p>
+                <p data-lang="en">
+                  What makes sense to me doesn't make sense to everyone. You
+                  really have to make things clear for the user.
+                </p>
+                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="project-card" data-reveal>
+            <a href="api.html" class="project-card-link">
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/apisolar.jpg"
+                  alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
+              <div class="project-card-body">
+                <h3><span data-lang="nl">Solar System — 3D-website met API</span><span data-lang="en">Solar System — 3D website with API</span></h3>
+                <p data-lang="nl">
+                  Ik heb geleerd hoe je een volledige 3D-website bouwt en wat de
+                  echte kracht van JavaScript is.
+                </p>
+                <p data-lang="en">
+                  I learned how to build a full 3D website and discovered the
+                  real power of JavaScript.
+                </p>
+                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="project-card" data-reveal>
+            <a href="movie_matching.html" class="project-card-link">
+              <img
+                src="img/moviematch.jpg"
+                alt="Screenshot van de Movie Matching-webapp"
+                width="1400"
+                height="715"
+                loading="lazy"
+              />
+              <div class="project-card-body">
+                <h3>Movie Matching</h3>
+                <p data-lang="nl">Een webapp voor het ontdekken van films en tv-shows.</p>
+                <p data-lang="en">A web app for discovering movies and TV shows.</p>
+                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
+              </div>
+            </a>
+          </li>
+          <li class="project-card" data-reveal>
+            <a href="hackathon.html" class="project-card-link">
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/hackathon-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/hackathon.jpg"
+                  alt="Scroll-demo van de NEBULA-Xplorer hackathon-website met aarde, raket en zwart gat"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
+              <div class="project-card-body">
+                <h3>Hackathon</h3>
+                <p data-lang="nl">
+                  Communicatie binnen een team is key. Zonder goede afstemming
+                  gaat een website snel kapot.
+                </p>
+                <p data-lang="en">
+                  Communication within a team is key. Without good alignment, a
+                  website breaks quickly.
+                </p>
+                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
+              </div>
+            </a>
+          </li>
           <li class="project-card" data-reveal>
             <a href="designsystem.html" class="project-card-link">
               <div class="project-card-img-placeholder">Design System</div>
@@ -193,87 +287,10 @@
             </a>
           </li>
           <li class="project-card" data-reveal>
-            <a href="browser_tech.html" class="project-card-link">
-              <img
-                src="img/browsertech.png"
-                alt="Screenshot van de Browser Tech-webapplicatie"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
-              <div class="project-card-body">
-                <h3>Browser Tech</h3>
-                <p data-lang="nl">
-                  Wat voor mij logisch is, is niet voor iedereen logisch. Je
-                  moet dingen echt duidelijk maken voor de gebruiker.
-                </p>
-                <p data-lang="en">
-                  What makes sense to me doesn't make sense to everyone. You
-                  really have to make things clear for the user.
-                </p>
-                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
-              </div>
-            </a>
-          </li>
-          <li class="project-card" data-reveal>
-            <a href="hackathon.html" class="project-card-link">
-              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
-              <picture>
-                <source srcset="img/hackathon-demo.gif" media="(prefers-reduced-motion: no-preference)" />
-                <img
-                  src="img/hackathon.jpg"
-                  alt="Scroll-demo van de NEBULA-Xplorer hackathon-website met aarde, raket en zwart gat"
-                  width="1280"
-                  height="800"
-                  loading="lazy"
-                />
-              </picture>
-              <div class="project-card-body">
-                <h3>Hackathon</h3>
-                <p data-lang="nl">
-                  Communicatie binnen een team is key. Zonder goede afstemming
-                  gaat een website snel kapot.
-                </p>
-                <p data-lang="en">
-                  Communication within a team is key. Without good alignment, a
-                  website breaks quickly.
-                </p>
-                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
-              </div>
-            </a>
-          </li>
-          <li class="project-card" data-reveal>
-            <a href="api.html" class="project-card-link">
-              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
-              <picture>
-                <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
-                <img
-                  src="img/apisolar.jpg"
-                  alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
-                  width="1280"
-                  height="800"
-                  loading="lazy"
-                />
-              </picture>
-              <div class="project-card-body">
-                <h3><span data-lang="nl">Solar System — 3D-website met API</span><span data-lang="en">Solar System — 3D website with API</span></h3>
-                <p data-lang="nl">
-                  Ik heb geleerd hoe je een volledige 3D-website bouwt en wat de
-                  echte kracht van JavaScript is.
-                </p>
-                <p data-lang="en">
-                  I learned how to build a full 3D website and discovered the
-                  real power of JavaScript.
-                </p>
-                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
-              </div>
-            </a>
-          </li>
-          <li class="project-card" data-reveal>
             <a href="beyond.html" class="project-card-link">
               <img
                 src="img/rest.jpg"
-                alt="Foto van het Rest Quest-product"
+                alt="Rest Quest-logo: een hoofd in profiel met daarin een mediterend figuur in een wolk"
                 width="480"
                 height="643"
                 loading="lazy"
@@ -288,23 +305,6 @@
                   An interactive, screenless product that helps students sleep
                   better.
                 </p>
-                <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
-              </div>
-            </a>
-          </li>
-          <li class="project-card" data-reveal>
-            <a href="movie_matching.html" class="project-card-link">
-              <img
-                src="img/moviematch.jpg"
-                alt="Screenshot van de Movie Matching-webapp"
-                width="1400"
-                height="715"
-                loading="lazy"
-              />
-              <div class="project-card-body">
-                <h3>Movie Matching</h3>
-                <p data-lang="nl">Een webapp voor het ontdekken van films en tv-shows.</p>
-                <p data-lang="en">A web app for discovering movies and TV shows.</p>
                 <span class="project-card-link-text"><span data-lang="nl">Lees meer →</span><span data-lang="en">Read more →</span></span>
               </div>
             </a>
