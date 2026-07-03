@@ -20,6 +20,7 @@
     <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/apisolar.jpg" />
     <link rel="stylesheet" href="styles.css" />
     <script src="lang.js"></script>
+    <script src="demo-narrate.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -40,16 +41,53 @@
       <div class="project-detail">
         <a href="index.html#projecten" class="back-link"><span class="back-arrow" aria-hidden="true">←</span><span data-lang="nl">Terug naar projecten</span><span data-lang="en">Back to projects</span></a>
         <h1>Solar System</h1>
-        <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
-        <picture>
-          <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
-          <img
-            src="img/apisolar.jpg"
-            alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
-            width="1280"
-            height="800"
-          />
-        </picture>
+        <!-- Zelf-vertellende demo: de GIF loopt (14,3s per lus, uit de frames gelezen) en de
+             bijschriften lichten mee op met wat er op dat moment gebeurt. De <ol> is de
+             toegankelijke bron van waarheid; demo-narrate.js maakt er een gesynchroniseerde
+             overlay van. Zonder JS of met 'reduced motion': gewone lijst + statische screenshot. -->
+        <figure class="demo" data-demo data-loop="14.3">
+          <div class="demo-stage">
+            <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+            <picture>
+              <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+              <img
+                src="img/apisolar.jpg"
+                alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
+                width="1280"
+                height="800"
+              />
+            </picture>
+            <div class="demo-track" aria-hidden="true"><span class="demo-track__fill"></span></div>
+            <div class="demo-caption" aria-hidden="true">
+              <span class="demo-caption__num"></span>
+              <span class="demo-caption__text"></span>
+            </div>
+          </div>
+          <figcaption>
+            <p class="demo-lead">
+              <span data-lang="nl">Wat je in de demo ziet gebeuren:</span>
+              <span data-lang="en">What you see happening in the demo:</span>
+            </p>
+            <ol class="demo-beats">
+              <li data-start="0">
+                <span data-lang="nl">Vlieg vrij door een 3D-zonnestelsel.</span>
+                <span data-lang="en">Fly freely through a 3D solar system.</span>
+              </li>
+              <li data-start="4">
+                <span data-lang="nl">Klik een planeet — de camera glijdt er soepel naartoe.</span>
+                <span data-lang="en">Click a planet — the camera glides smoothly toward it.</span>
+              </li>
+              <li data-start="7.5">
+                <span data-lang="nl">Echte API-data verschijnt: zwaartekracht, massa, straal, temperatuur, omlooptijd.</span>
+                <span data-lang="en">Real API data appears: gravity, mass, radius, temperature, orbital period.</span>
+              </li>
+              <li data-start="11">
+                <span data-lang="nl">De zon gloeit met een bloom-effect boven een sterrenveld.</span>
+                <span data-lang="en">The sun glows with a bloom effect over a field of stars.</span>
+              </li>
+            </ol>
+          </figcaption>
+        </figure>
 
         <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
         <p data-lang="nl">
@@ -61,20 +99,6 @@
           learned how to process data from an API and display it visually in an
           interactive 3D environment.
         </p>
-
-        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
-        <ul data-lang="nl">
-          <li>Interactief 3D-zonnestelsel waarin je vrij door de ruimte kunt vliegen.</li>
-          <li>Klik op een planeet en de camera vliegt er soepel naartoe.</li>
-          <li>Infopaneel per planeet met echte data uit de API: zwaartekracht, massa, straal, temperatuur, omlooptijd en meer.</li>
-          <li>De zon als lichtgevende bol met een gloed-effect (bloom) en een sterrenveld als achtergrond.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Interactive 3D solar system you can fly through freely.</li>
-          <li>Click a planet and the camera smoothly flies towards it.</li>
-          <li>Info panel per planet with real data from the API: gravity, mass, radius, temperature, orbital period and more.</li>
-          <li>The sun as a glowing sphere with a bloom effect and a star field background.</li>
-        </ul>
 
         <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
         <ul data-lang="nl">

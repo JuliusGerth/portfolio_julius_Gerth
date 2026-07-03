@@ -20,6 +20,7 @@
     <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/hackathon.jpg" />
     <link rel="stylesheet" href="styles.css" />
     <script src="lang.js"></script>
+    <script src="demo-narrate.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -40,16 +41,49 @@
       <div class="project-detail">
         <a href="index.html#projecten" class="back-link"><span class="back-arrow" aria-hidden="true">←</span><span data-lang="nl">Terug naar projecten</span><span data-lang="en">Back to projects</span></a>
         <h1>Hackathon</h1>
-        <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
-        <picture>
-          <source srcset="img/hackathon-demo.gif" media="(prefers-reduced-motion: no-preference)" />
-          <img
-            src="img/hackathon.jpg"
-            alt="Scroll-demo van de NEBULA-Xplorer hackathon-website met aarde, raket en zwart gat"
-            width="1280"
-            height="800"
-          />
-        </picture>
+        <!-- Zelf-vertellende demo: de GIF loopt (8,06s per lus, uit de frames gelezen) en de
+             bijschriften lichten mee op met wat er op dat moment gebeurt. De <ol> is de
+             toegankelijke bron van waarheid; demo-narrate.js maakt er een gesynchroniseerde
+             overlay van. Zonder JS of met 'reduced motion': gewone lijst + statische screenshot. -->
+        <figure class="demo" data-demo data-loop="8.06">
+          <div class="demo-stage">
+            <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+            <picture>
+              <source srcset="img/hackathon-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+              <img
+                src="img/hackathon.jpg"
+                alt="Scroll-demo van de NEBULA-Xplorer hackathon-website met aarde, raket en zwart gat"
+                width="1280"
+                height="800"
+              />
+            </picture>
+            <div class="demo-track" aria-hidden="true"><span class="demo-track__fill"></span></div>
+            <div class="demo-caption" aria-hidden="true">
+              <span class="demo-caption__num"></span>
+              <span class="demo-caption__text"></span>
+            </div>
+          </div>
+          <figcaption>
+            <p class="demo-lead">
+              <span data-lang="nl">Wat je in de demo ziet gebeuren:</span>
+              <span data-lang="en">What you see happening in the demo:</span>
+            </p>
+            <ol class="demo-beats">
+              <li data-start="0">
+                <span data-lang="nl">De reis begint op aarde: een one-page site over de NEBULA-Xplorer, een fictieve satellietmissie voor SRON.</span>
+                <span data-lang="en">The journey starts on Earth: a one-page site about the NEBULA-Xplorer, a fictional satellite mission for SRON.</span>
+              </li>
+              <li data-start="2.7">
+                <span data-lang="nl">Scroll-storytelling: al scrollend reis je van de aarde de ruimte in.</span>
+                <span data-lang="en">Scroll storytelling: as you scroll you travel from Earth into space.</span>
+              </li>
+              <li data-start="5.4">
+                <span data-lang="nl">Eindbestemming: het 3D-zwarte gat, gebouwd met Three.js.</span>
+                <span data-lang="en">Final destination: the 3D black hole, built with Three.js.</span>
+              </li>
+            </ol>
+          </figcaption>
+        </figure>
 
         <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
         <p data-lang="nl">
@@ -76,31 +110,19 @@
           hole
         </p>
 
-        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
-        <ul data-lang="nl">
-          <li>One-page site over de NEBULA-Xplorer, een fictieve satellietmissie voor SRON.</li>
-          <li>Scroll-storytelling: al scrollend volg je de reis van de aarde naar een zwart gat.</li>
-          <li>Een 3D-zwart gat gebouwd met Three.js.</li>
-          <li>Responsive canvas dat meeschaalt met elk schermformaat.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>One-page site about the NEBULA-Xplorer, a fictional satellite mission for SRON.</li>
-          <li>Scroll storytelling: as you scroll you follow the journey from Earth to a black hole.</li>
-          <li>A 3D black hole built with Three.js.</li>
-          <li>Responsive canvas that scales with every screen size.</li>
-        </ul>
-
         <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
         <ul data-lang="nl">
           <li>HTML, CSS en JavaScript</li>
           <li>Three.js voor het 3D-zwarte gat</li>
           <li>Scroll-gedreven animaties</li>
+          <li>Responsive canvas dat meeschaalt met elk schermformaat</li>
           <li>Git &amp; GitHub voor de samenwerking in het team</li>
         </ul>
         <ul data-lang="en">
           <li>HTML, CSS and JavaScript</li>
           <li>Three.js for the 3D black hole</li>
           <li>Scroll-driven animations</li>
+          <li>Responsive canvas that scales with every screen size</li>
           <li>Git &amp; GitHub for team collaboration</li>
         </ul>
 

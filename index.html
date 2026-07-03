@@ -103,12 +103,12 @@
         <h2><span data-lang="nl">Over mij</span><span data-lang="en">About me</span></h2>
         <p data-lang="nl">
           Mijn naam is Julius Gerth en ik ben vierdejaarsstudent Communication
-          &amp; Multimedia Design aan de Hogeschool van Amsterdam. Ik zit het
+         Multimedia Design aan de Hogeschool van Amsterdam. Ik zit het
           liefst op het snijvlak van ontwerp en techniek: een interface
           bedenken én hem daarna zelf werkend bouwen.
         </p>
         <p data-lang="en">
-          My name is Julius Gerth and I'm a fourth-year Communication &amp;
+          My name is Julius Gerth and I'm a fourth-year Communication 
           Multimedia Design student at the Amsterdam University of Applied
           Sciences. I like to work where design meets technology: coming up
           with an interface and then building it myself.
@@ -217,13 +217,17 @@
           </li>
           <li class="project-card" data-reveal>
             <a href="hackathon.html" class="project-card-link">
-              <img
-                src="img/hackathon.jpg"
-                alt="Screenshot van de hackathon-website"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/hackathon-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/hackathon.jpg"
+                  alt="Scroll-demo van de NEBULA-Xplorer hackathon-website met aarde, raket en zwart gat"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
               <div class="project-card-body">
                 <h3>Hackathon</h3>
                 <p data-lang="nl">
@@ -240,13 +244,17 @@
           </li>
           <li class="project-card" data-reveal>
             <a href="api.html" class="project-card-link">
-              <img
-                src="img/apisolar.jpg"
-                alt="De aarde en de zon in de 3D solar system-website"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/solar-demo.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/apisolar.jpg"
+                  alt="Demo van de Solar System-website: de camera vliegt van het zonnestelsel-overzicht naar een roterende aarde"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
               <div class="project-card-body">
                 <h3><span data-lang="nl">Solar System — 3D-website met API</span><span data-lang="en">Solar System — 3D website with API</span></h3>
                 <p data-lang="nl">

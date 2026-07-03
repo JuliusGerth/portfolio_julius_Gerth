@@ -20,6 +20,7 @@
     <meta property="og:image" content="https://juliusgerth.github.io/portfolio_julius_Gerth/img/browsertech.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="lang.js"></script>
+    <script src="demo-live.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main"><span data-lang="nl">Naar inhoud</span><span data-lang="en">Skip to content</span></a>
@@ -84,18 +85,81 @@
         </p>
 
         <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
-        <ul data-lang="nl">
-          <li>Een uitgebreid formulier, opgebouwd met semantische fieldsets en labels.</li>
-          <li>Progressive disclosure: vervolgvelden verschijnen pas wanneer je antwoord daarom vraagt.</li>
-          <li>Validatie met HTML-attributen en CSS — werkt dus ook zonder JavaScript.</li>
-          <li>Bruikbaar in elke browser, op elk apparaat en met elke verbinding.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>An extensive form, built with semantic fieldsets and labels.</li>
-          <li>Progressive disclosure: follow-up fields only appear when your answer calls for them.</li>
-          <li>Validation with HTML attributes and CSS — so it works without JavaScript too.</li>
-          <li>Usable in every browser, on every device and on any connection.</li>
-        </ul>
+        <!-- Live 'probeer het zelf'-demo: een werkend fragment uit het echte aangifteformulier.
+             De genummerde lijst is de toegankelijke bron van waarheid; demo-live.js vinkt de
+             functies af terwijl je ze in het fragment gebruikt. Zonder JS: gewone lijst, en het
+             fragment (disclosure + validatie) werkt gewoon — precies het punt van dit project. -->
+        <figure class="demo" data-demo-live>
+          <figcaption>
+            <p class="demo-lead">
+              <span data-lang="nl">Probeer het zelf — dit fragment uit het echte formulier werkt in elke browser, op elk apparaat, ook zonder JavaScript:</span>
+              <span data-lang="en">Try it yourself — this fragment of the real form works in every browser, on every device, even without JavaScript:</span>
+            </p>
+            <ol class="demo-beats">
+              <li data-beat="semantics">
+                <span data-lang="nl">Opgebouwd met semantische fieldsets en labels — klik in een veld.</span>
+                <span data-lang="en">Built with semantic fieldsets and labels — click into a field.</span>
+              </li>
+              <li data-beat="disclosure">
+                <span data-lang="nl">Progressive disclosure: vervolgvelden verschijnen pas wanneer je antwoord daarom vraagt — antwoord 'Ja'.</span>
+                <span data-lang="en">Progressive disclosure: follow-up fields only appear when your answer calls for them — answer 'Yes'.</span>
+              </li>
+              <li data-beat="validation">
+                <span data-lang="nl">Validatie met HTML-attributen en CSS, zonder JavaScript — typ een BSN.</span>
+                <span data-lang="en">Validation with HTML attributes and CSS, no JavaScript — type a BSN.</span>
+              </li>
+            </ol>
+          </figcaption>
+          <div class="demo-stage demo-stage--form">
+            <fieldset class="demo-form">
+              <legend>
+                <span data-lang="nl">Gegevens van de overledene <em>(fragment uit het echte formulier)</em></span>
+                <span data-lang="en">Details of the deceased <em>(fragment from the real form)</em></span>
+              </legend>
+
+              <div class="demo-form__field">
+                <label for="demo-bsn">
+                  <span data-lang="nl">Burgerservicenummer (BSN)</span>
+                  <span data-lang="en">Citizen service number (BSN)</span>
+                </label>
+                <span class="demo-form__hint" id="demo-bsn-hint">
+                  <span data-lang="nl">8 tot 9 cijfers</span>
+                  <span data-lang="en">8 to 9 digits</span>
+                </span>
+                <input
+                  type="text"
+                  id="demo-bsn"
+                  name="demo-bsn"
+                  inputmode="numeric"
+                  pattern="[0-9]{8,9}"
+                  aria-describedby="demo-bsn-hint demo-bsn-error"
+                />
+                <span class="demo-form__error" id="demo-bsn-error">
+                  <span data-lang="nl">Een BSN bestaat uit 8 tot 9 cijfers.</span>
+                  <span data-lang="en">A BSN consists of 8 to 9 digits.</span>
+                </span>
+              </div>
+
+              <fieldset class="demo-form__radios">
+                <legend>
+                  <span data-lang="nl">Had de overledene kinderen?</span>
+                  <span data-lang="en">Did the deceased have children?</span>
+                </legend>
+                <input type="radio" id="demo-kids-ja" name="demo-kinderen" value="ja" />
+                <label for="demo-kids-ja"><span data-lang="nl">Ja</span><span data-lang="en">Yes</span></label>
+                <input type="radio" id="demo-kids-nee" name="demo-kinderen" value="nee" />
+                <label for="demo-kids-nee"><span data-lang="nl">Nee</span><span data-lang="en">No</span></label>
+                <div class="demo-form__followup">
+                  <label for="demo-kids-aantal">
+                    <span data-lang="nl">Hoeveel kinderen had de overledene?</span>
+                    <span data-lang="en">How many children did the deceased have?</span>
+                  </label>
+                  <input type="number" id="demo-kids-aantal" name="demo-kids-aantal" min="1" max="20" />
+                </div>
+              </fieldset>
+            </fieldset>
+          </div>
+        </figure>
 
         <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
         <ul data-lang="nl">

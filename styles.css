@@ -969,4 +969,320 @@ footer a:hover {
     opacity: 1;
     transform: none;
   }
+
+  /* Geen bewegende overlay bij reduced motion: de statische screenshot + de
+     genummerde lijst vertellen het verhaal. (JS activeert de overlay sowieso niet.) */
+  .demo-caption,
+  .demo-track {
+    display: none !important;
+  }
+}
+
+/* ── Zelf-vertellende demo (Solar System) ──────────── */
+.demo {
+  margin: 1rem 0 2rem;
+}
+
+.demo-stage {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #05070d;
+  line-height: 0; /* geen witruimte onder de inline-afbeelding */
+}
+
+.demo-stage picture,
+.demo-stage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* De stage geeft zelf het kader; overschrijf de generieke .project-detail img-regels. */
+.demo-stage img {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+/* Overlay + balk staan standaard uit; JS zet ze aan via .is-live (progressive enhancement),
+   zodat ze zonder JS nooit half-gerenderd verschijnen. */
+.demo-caption,
+.demo-track {
+  display: none;
+}
+
+.demo.is-live .demo-caption {
+  display: flex;
+}
+
+.demo.is-live .demo-track {
+  display: block;
+}
+
+/* Voortgangsbalk met beat-punten, bovenaan het beeld. */
+.demo-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.demo-track__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent-yellow);
+}
+
+.demo-track__dot {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.demo-track__dot.is-active {
+  background: var(--accent-yellow);
+  transform: scale(1.6);
+}
+
+/* Meebewegend bijschrift onder in het beeld. */
+.demo-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 2.75rem 1.1rem 1rem;
+  color: #fff;
+  line-height: 1.4;
+  font-size: 0.95rem;
+  background: linear-gradient(to top, rgba(3, 8, 6, 0.92), rgba(3, 8, 6, 0));
+}
+
+.demo-caption__num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--accent-yellow);
+  color: #1a1200;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.demo-caption__text {
+  font-weight: 500;
+}
+
+.demo-caption.is-swap {
+  animation: demoCaptionIn 0.45s ease;
+}
+
+@keyframes demoCaptionIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* De lijst is de toegankelijke bron van waarheid (ook zonder JS / bij reduced motion). */
+.demo-lead {
+  color: var(--text);
+  font-weight: 600;
+  margin: 1rem 0 0.6rem;
+}
+
+.demo-beats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: beat;
+}
+
+.demo-beats li {
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-muted);
+  counter-increment: beat;
+  transition: color 0.2s;
+}
+
+.demo-beats li::before {
+  content: counter(beat);
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Actieve beat, synchroon met de demo (alleen wanneer JS de timeline aanstuurt). */
+.demo-beats li.is-active {
+  color: var(--text);
+}
+
+.demo-beats li.is-active::before {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Live 'probeer het zelf'-demo (Browser Tech) ───── */
+/* Afgevinkte beat: het nummer wordt een vinkje (alleen wanneer JS meevinkt). */
+.demo.is-live .demo-beats li.is-done {
+  color: var(--text);
+}
+
+.demo.is-live .demo-beats li.is-done::before {
+  content: '✓';
+  background: var(--accent);
+  color: #fff;
+  animation: demoBeatPop 0.25s ease;
+}
+
+@keyframes demoBeatPop {
+  from { transform: scale(0.6); }
+  to { transform: scale(1); }
+}
+
+/* De stage is hier een formulier, geen media: licht vlak i.p.v. donker beeldkader. */
+.demo-stage--form {
+  background: var(--surface);
+  line-height: 1.5;
+  padding: 1.5rem;
+  overflow: visible;
+}
+
+.demo-form {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-form > legend {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.demo-form legend em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.demo-form__field label,
+.demo-form__followup label {
+  display: block;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.demo-form__hint {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.demo-form input[type='text'],
+.demo-form input[type='number'] {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: min(100%, 16rem);
+}
+
+.demo-form input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.demo-form input {
+  accent-color: var(--accent);
+}
+
+/* Live validatie, puur met CSS. Bewust losse regels: een onbekende pseudo-class
+   maakt anders de hele selector ongeldig in oudere browsers. */
+.demo-form input:user-invalid {
+  border-color: #b42318;
+}
+
+.demo-form input:user-valid {
+  border-color: var(--accent);
+}
+
+.demo-form__error {
+  display: none;
+  font-size: 0.85rem;
+  color: #b42318;
+  margin-top: 0.35rem;
+}
+
+#demo-bsn:user-invalid ~ .demo-form__error {
+  display: block;
+}
+
+.demo-form__radios {
+  border: 0;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.demo-form__radios legend {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+  padding: 0;
+}
+
+.demo-form__radios input[type='radio'] {
+  margin-right: 0.3rem;
+}
+
+.demo-form__radios label {
+  margin-right: 1.25rem;
+}
+
+/* Progressive disclosure, puur met CSS: de vervolgvraag verschijnt bij 'Ja'. */
+.demo-form__followup {
+  display: none;
+  margin-top: 0.85rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--accent-light);
+}
+
+#demo-kids-ja:checked ~ .demo-form__followup {
+  display: block;
 }
