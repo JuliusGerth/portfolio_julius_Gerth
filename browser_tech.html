@@ -59,12 +59,17 @@
           ><span data-lang="en">Back to projects</span></a
         >
         <h1>Browser Tech</h1>
-        <img
-          src="img/browsertech.gif"
-          alt="Screenshot van de Browser Tech-webapplicatie"
-          width="1400"
-          height="1000"
-        />
+        <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+        <picture>
+          <source srcset="img/browsertech.gif" media="(prefers-reduced-motion: no-preference)" />
+          <img
+            src="img/browsertech.png"
+            alt="Screenshot van de Browser Tech-webapplicatie"
+            width="1280"
+            height="800"
+            loading="lazy"
+          />
+        </picture>
 
         <h2>
           <span data-lang="nl">Over dit project</span

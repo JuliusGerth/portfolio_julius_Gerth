@@ -102,13 +102,13 @@
         <h2><span data-lang="nl">Over mij</span><span data-lang="en">About me</span></h2>
         <p data-lang="nl">
           Mijn naam is Julius Gerth en ik ben vierdejaarsstudent Communication
-         Multimedia Design aan de Hogeschool van Amsterdam. Ik zit het
+          &amp; Multimedia Design aan de Hogeschool van Amsterdam. Ik zit het
           liefst op het snijvlak van ontwerp en techniek: een interface
           bedenken én hem daarna zelf werkend bouwen.
         </p>
         <p data-lang="en">
-          My name is Julius Gerth and I'm a fourth-year Communication 
-          Multimedia Design student at the Amsterdam University of Applied
+          My name is Julius Gerth and I'm a fourth-year Communication
+          &amp; Multimedia Design student at the Amsterdam University of Applied
           Sciences. I like to work where design meets technology: coming up
           with an interface and then building it myself.
         </p>
@@ -154,13 +154,17 @@
         <ul class="project-grid">
           <li class="project-card" data-reveal>
             <a href="browser_tech.html" class="project-card-link">
-              <img
-                src="img/browsertech.gif"
-                alt="Screenshot van de Browser Tech-webapplicatie"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/browsertech.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/browsertech.png"
+                  alt="Screenshot van de Browser Tech-webapplicatie"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
               <div class="project-card-body">
                 <h3>Browser Tech</h3>
                 <p data-lang="nl">
