@@ -20,6 +20,9 @@
   --text: #0B1A13;
   /* #4A5A52 haalt WCAG AA ruim op --bg en blijft leesbaar op de nav. */
   --text-muted: #4A5A52;
+  /* Leesbare bodytekst-inkt: donkerder dan --text-muted (~10:1, AAA op --bg),
+     maar zachter dan de kop-inkt zodat de hiërarchie kop↔body behouden blijft. */
+  --text-body: #2E3B34;
   --accent: #004225;
   --accent-hover: #00311B;
   --accent-light: #DCE7E1;
@@ -73,6 +76,8 @@
     --surface-2: #152C22;
     --text: #E7F0EA;
     --text-muted: #9CB2A7;
+    /* In het donker leest de body al ruim (~8:1); body-inkt = muted. */
+    --text-body: #9CB2A7;
     --accent: #3EC581;
     --accent-hover: #5DD79A;
     --accent-light: #16311F;
@@ -114,6 +119,7 @@
   --surface-2: #152C22;
   --text: #E7F0EA;
   --text-muted: #9CB2A7;
+  --text-body: #9CB2A7;
   --accent: #3EC581;
   --accent-hover: #5DD79A;
   --accent-light: #16311F;
@@ -153,6 +159,7 @@
     --surface-2: #F4F8F6;
     --text: #0B1A13;
     --text-muted: #4A5A52;
+    --text-body: #2E3B34;
     --accent: #004225;
     --accent-hover: #00311B;
     --accent-light: #DCE7E1;
@@ -1268,7 +1275,7 @@ main {
   margin-top: 0.35rem;
 }
 .case-summary {
-  color: var(--text-muted);
+  color: var(--text-body, var(--text-muted));
   max-width: 62ch;
   margin-bottom: 1.75rem;
 }
@@ -1496,8 +1503,8 @@ main {
   padding: 0.15rem 0.4rem;
   line-height: 1;
 }
-.case-body p { color: var(--text-muted); margin-bottom: 1rem; }
-.case-body ul { color: var(--text-muted); padding-left: 1.4rem; margin-bottom: 1rem; }
+.case-body p { color: var(--text-body, var(--text-muted)); margin-bottom: 1rem; }
+.case-body ul { color: var(--text-body, var(--text-muted)); padding-left: 1.4rem; margin-bottom: 1rem; }
 .case-body li { margin-bottom: 0.45rem; }
 .case-body img {
   width: 100%;
@@ -1780,7 +1787,7 @@ footer a:hover {
   position: relative;
   padding-left: 2.2rem;
   margin-bottom: 0.6rem;
-  color: var(--text-muted);
+  color: var(--text-body, var(--text-muted));
   counter-increment: beat;
   transition: color 0.2s;
 }
