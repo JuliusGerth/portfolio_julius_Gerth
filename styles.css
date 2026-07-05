@@ -7,23 +7,180 @@
   font-display: swap;
 }
 
+/* ────────────────────────────────────────────────────────────
+   Ontwerpconcept "Telemetry": de site als instrumentenpaneel van
+   een design-engineer. Lopende tekst blijft rustige schreefloze
+   letter; labels, meta en getallen krijgen mono + hoofdletters.
+   Goud = de 'actieve / persoonlijk record'-markering.
+   ──────────────────────────────────────────────────────────── */
 :root {
-  --bg: #F8FAFC;
+  --bg: #EDF1EF;
   --surface: #FFFFFF;
-  --text: #0F172A;
-  /* #475569 i.p.v. #64748B: haalt WCAG AAA op wit (7,6:1) en blijft
-     leesbaar op de semi-transparante gescrolde nav boven de groene hero */
-  --text-muted: #475569;
+  --surface-2: #F4F8F6;
+  --text: #0B1A13;
+  /* #4A5A52 haalt WCAG AA ruim op --bg en blijft leesbaar op de nav. */
+  --text-muted: #4A5A52;
   --accent: #004225;
-  --accent-hover: #00301b;
-  --accent-light: #DBE8E1;
+  --accent-hover: #00311B;
+  --accent-light: #DCE7E1;
   --accent-yellow: #F2C200;
   --accent-yellow-soft: #FFE375;
-  --border: #E2E8F0;
+  --border: #D3DDD7;
+  --tick: #A7B7AF;
+  /* Tekstkleur bovenop een accent-vlak (draait mee met het thema). */
+  --on-accent: #FFFFFF;
+  --nav-bg: #FFFFFF;
+  --nav-scrolled: rgba(255, 255, 255, 0.85);
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
-  --radius: 12px;
+  --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', 'SF Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', monospace;
+  --shadow-sm: 0 1px 2px rgba(11, 26, 19, 0.06);
+  --shadow-md: 0 10px 30px rgba(11, 26, 19, 0.10);
+  --radius: 6px;
+  --radius-sm: 3px;
+
+  /* Hero-instrument bij daglicht (licht thema): pale-groen paneel,
+     groene inkt, groen/goud accenten. Donker thema overschrijft dit. */
+  --hero-bg: linear-gradient(150deg, #E6EFE9 0%, #F3F8F4 52%, #E1EBE4 100%);
+  --hero-border: var(--border);
+  --hero-shadow: var(--shadow-sm);
+  --hero-ink: #0B1A13;
+  --hero-ink-soft: #4A5A52;
+  --hero-name-tail: #0A7D44;
+  --hero-tagline: #004225;
+  --hero-cred: #004225;
+  --hero-bracket: rgba(0, 66, 37, 0.45);
+  --hero-grid: rgba(0, 66, 37, 0.06);
+  --hero-scan: rgba(0, 66, 37, 0.38);
+  --hero-line: var(--border);
+  --hero-link: #004225;
+  --hero-link-hover: #00311B;
+  --hero-dot: #E0A400;
+
+  /* Actief 'OPEN'-veld in de stats-cluster. */
+  --status-bg: #FBF4DA;
+  --status-ink: #7A5C00;
+}
+
+/* ── Donker thema ─────────────────────────────────
+   Native aan het concept: een instrumentenpaneel is 's nachts thuis.
+   Standaard volgt het thema de systeemvoorkeur (prefers-color-scheme).
+   De handmatige wissel verderop (pure CSS via een checkbox + :has(),
+   zónder JavaScript) keert die systeemkeuze om. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0A130E;
+    --surface: #10201A;
+    --surface-2: #152C22;
+    --text: #E7F0EA;
+    --text-muted: #9CB2A7;
+    --accent: #3EC581;
+    --accent-hover: #5DD79A;
+    --accent-light: #16311F;
+    --border: #22392E;
+    --tick: #3B5648;
+    --on-accent: #06140D;
+    --nav-bg: #0C1812;
+    --nav-scrolled: rgba(12, 24, 18, 0.82);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.55);
+
+    /* Hero-instrument bij nacht (donker thema): night-race HUD. */
+    --hero-bg: linear-gradient(150deg, #06140D 0%, #0A2417 52%, #051810 100%);
+    --hero-border: rgba(255, 215, 0, 0.14);
+    --hero-shadow: none;
+    --hero-ink: #E7F0EA;
+    --hero-ink-soft: rgba(255, 255, 255, 0.74);
+    --hero-name-tail: #FFD700;
+    --hero-tagline: #FFD700;
+    --hero-cred: #FFD84A;
+    --hero-bracket: rgba(242, 194, 0, 0.65);
+    --hero-grid: rgba(255, 255, 255, 0.045);
+    --hero-scan: rgba(242, 194, 0, 0.75);
+    --hero-line: rgba(255, 255, 255, 0.2);
+    --hero-link: #E7F0EA;
+    --hero-link-hover: #FFD700;
+    --hero-dot: #F2C200;
+    --status-bg: rgba(242, 194, 0, 0.07);
+    --status-ink: #F2C200;
+  }
+}
+
+/* Handmatige wissel — puur CSS. Een aangevinkte checkbox (.theme-switch)
+   keert het systeemthema om: licht systeem → donker (dit blok), en
+   donker systeem → licht (het herstelblok hierna). */
+:root:has(.theme-switch:checked) {
+  --bg: #0A130E;
+  --surface: #10201A;
+  --surface-2: #152C22;
+  --text: #E7F0EA;
+  --text-muted: #9CB2A7;
+  --accent: #3EC581;
+  --accent-hover: #5DD79A;
+  --accent-light: #16311F;
+  --border: #22392E;
+  --tick: #3B5648;
+  --on-accent: #06140D;
+  --nav-bg: #0C1812;
+  --nav-scrolled: rgba(12, 24, 18, 0.82);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.55);
+
+  /* Hero-instrument bij nacht (donker thema): night-race HUD. */
+  --hero-bg: linear-gradient(150deg, #06140D 0%, #0A2417 52%, #051810 100%);
+  --hero-border: rgba(255, 215, 0, 0.14);
+  --hero-shadow: none;
+  --hero-ink: #E7F0EA;
+  --hero-ink-soft: rgba(255, 255, 255, 0.74);
+  --hero-name-tail: #FFD700;
+  --hero-tagline: #FFD700;
+  --hero-cred: #FFD84A;
+  --hero-bracket: rgba(242, 194, 0, 0.65);
+  --hero-grid: rgba(255, 255, 255, 0.045);
+  --hero-scan: rgba(242, 194, 0, 0.75);
+  --hero-line: rgba(255, 255, 255, 0.2);
+  --hero-link: #E7F0EA;
+  --hero-link-hover: #FFD700;
+  --hero-dot: #F2C200;
+  --status-bg: rgba(242, 194, 0, 0.07);
+  --status-ink: #F2C200;
+}
+
+/* Donker systeem + aangevinkt → terug naar het lichte palet (pure CSS invert). */
+@media (prefers-color-scheme: dark) {
+  :root:has(.theme-switch:checked) {
+    --bg: #EDF1EF;
+    --surface: #FFFFFF;
+    --surface-2: #F4F8F6;
+    --text: #0B1A13;
+    --text-muted: #4A5A52;
+    --accent: #004225;
+    --accent-hover: #00311B;
+    --accent-light: #DCE7E1;
+    --border: #D3DDD7;
+    --tick: #A7B7AF;
+    --on-accent: #FFFFFF;
+    --nav-bg: #FFFFFF;
+    --nav-scrolled: rgba(255, 255, 255, 0.85);
+    --shadow-sm: 0 1px 2px rgba(11, 26, 19, 0.06);
+    --shadow-md: 0 10px 30px rgba(11, 26, 19, 0.10);
+    --hero-bg: linear-gradient(150deg, #E6EFE9 0%, #F3F8F4 52%, #E1EBE4 100%);
+    --hero-border: var(--border);
+    --hero-shadow: var(--shadow-sm);
+    --hero-ink: #0B1A13;
+    --hero-ink-soft: #4A5A52;
+    --hero-name-tail: #0A7D44;
+    --hero-tagline: #004225;
+    --hero-cred: #004225;
+    --hero-bracket: rgba(0, 66, 37, 0.45);
+    --hero-grid: rgba(0, 66, 37, 0.06);
+    --hero-scan: rgba(0, 66, 37, 0.38);
+    --hero-line: var(--border);
+    --hero-link: #004225;
+    --hero-link-hover: #00311B;
+    --hero-dot: #E0A400;
+    --status-bg: #FBF4DA;
+    --status-ink: #7A5C00;
+  }
 }
 
 html {
@@ -60,15 +217,28 @@ h1, h2, h3,
   font-family: var(--font-heading);
 }
 
+/* Gedeelde mono-'label'-stijl: het handschrift van het instrumentpaneel. */
+.mono-label,
+.hero-eyebrow,
+.stat-label,
+.card-meta,
+.hero-readout dt,
+.nav-links a,
+.section-heading::before {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 /* ── Skip-link (toetsenbord/screenreader) ────────── */
 .skip-link {
   position: fixed;
   top: -4rem;
   left: 1rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   padding: 0.6rem 1.1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-size: 0.9rem;
   z-index: 200;
@@ -111,7 +281,7 @@ html:not([lang='en']) [data-lang='en'] { display: none !important; }
 nav {
   position: sticky;
   top: 0;
-  background: var(--surface);
+  background: var(--nav-bg);
   border-bottom: 1px solid var(--border);
   padding: 1rem 2rem;
   display: flex;
@@ -122,10 +292,10 @@ nav {
 }
 
 nav.scrolled {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--nav-scrolled);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.10);
   border-bottom-color: transparent;
 }
 
@@ -143,14 +313,15 @@ nav.scrolled {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.75rem;
   list-style: none;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.78rem;
   transition: color 0.2s;
   position: relative;
   padding-bottom: 2px;
@@ -185,11 +356,11 @@ nav.scrolled {
 }
 
 .lang-toggle {
-  font-family: inherit;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--text);
+  letter-spacing: 0.08em;
+  color: #1a1200;
   background: var(--accent-yellow);
   border: none;
   border-radius: 999px;
@@ -202,6 +373,73 @@ nav.scrolled {
 .lang-toggle:hover { filter: brightness(0.95); }
 .lang-toggle:active { transform: scale(0.94); }
 
+/* ── Theme toggle (licht / donker) — puur CSS ──────
+   Een verborgen checkbox (.theme-switch) + een label als knop. :has()
+   leest de checkbox en keert het thema om. Geen JavaScript nodig. */
+.nav-links .theme-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* De checkbox is onzichtbaar maar blijft focusbaar met het toetsenbord. */
+.theme-switch {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.1s;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.theme-toggle:active { transform: scale(0.94); }
+
+/* Focus-ring op het label wanneer de verborgen checkbox focus krijgt. */
+.theme-switch:focus-visible + .theme-toggle {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.theme-toggle .icon { display: block; }
+
+/* Toon het pictogram van het thema waarnaar de knop wisselt: maan in licht
+   (klik = donker), zon in donker (klik = licht). Zelfde invert-logica als de
+   tokens, zodat het icoon altijd het effectieve thema toont — puur CSS. */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+:root:has(.theme-switch:checked) .theme-toggle .icon-sun { display: block; }
+:root:has(.theme-switch:checked) .theme-toggle .icon-moon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  .theme-toggle .icon-sun { display: block; }
+  .theme-toggle .icon-moon { display: none; }
+
+  :root:has(.theme-switch:checked) .theme-toggle .icon-sun { display: none; }
+  :root:has(.theme-switch:checked) .theme-toggle .icon-moon { display: block; }
+}
+
 /* ── Main layout ─────────────────────────────────── */
 main {
   flex: 1;
@@ -211,77 +449,93 @@ main {
   padding: 2rem;
 }
 
-/* ── Hero ────────────────────────────────────────── */
+/* ── Hero: instrumentenpaneel ────────────────────── */
+/* Twee gezichten van hetzelfde instrument: 'night-race HUD' (donker) en
+   'daylight pit-wall readout' (licht). Alle kleuren via --hero-*-tokens,
+   zodat het hero-paneel met het thema meewisselt. */
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 4rem 0 3rem;
-  background: linear-gradient(135deg, #002d19 0%, #004225 55%, #00582f 100%);
+  padding: 2.75rem 2.5rem 2.5rem;
+  background: var(--hero-bg);
+  border: 1px solid var(--hero-border);
   border-radius: var(--radius);
+  box-shadow: var(--hero-shadow);
 }
 
+/* Fijn meetraster + goud sweep-lijntje; volgen samen subtiel de muis (script.js). */
 .hero-bg {
   position: absolute;
-  inset: 0;
+  inset: -1px;
   pointer-events: none;
   z-index: 0;
   transition: transform 0.3s ease-out;
 }
 
-.blob {
+.hero-grid {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.45;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(120% 90% at 15% 0%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(120% 90% at 15% 0%, #000 35%, transparent 78%);
 }
 
-.blob-1 {
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, #fbe44d, #f2c200);
-  top: -200px;
-  right: -120px;
-  animation: blob-float 11s ease-in-out infinite;
+.hero-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hero-scan), transparent);
+  opacity: 0;
+  animation: hero-scan 2.6s ease-out 0.35s 1 both;
 }
 
-.blob-2 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #0a7d44, #00502c);
-  bottom: -100px;
-  left: -80px;
-  animation: blob-float 14s ease-in-out infinite reverse;
-}
-
-.blob-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #ffd700, #d4a800);
-  bottom: -120px;
-  right: 22%;
-  opacity: 0.30;
-  animation: blob-float 13s ease-in-out infinite;
-}
-
-@keyframes blob-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(28px, -20px) scale(1.06); }
-  66%       { transform: translate(-18px, 16px) scale(0.94); }
+@keyframes hero-scan {
+  0%   { transform: translateY(0); opacity: 0; }
+  9%   { opacity: 0.9; }
+  90%  { opacity: 0.9; }
+  100% { transform: translateY(460px); opacity: 0; }
 }
 
 .hero-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
   position: relative;
   z-index: 1;
-  padding-left: 3rem;
 }
 
+/* Foto als 'credential': hoekmarkeringen + mono-onderschrift. */
+.hero-plate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem;
+}
+
+.hero-plate::before,
+.hero-plate::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--hero-bracket);
+}
+
+.hero-plate::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.hero-plate::after  { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
 .hero-photo {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
   flex-shrink: 0;
   box-shadow: var(--shadow-md);
@@ -292,35 +546,60 @@ main {
 }
 
 .hero-photo:hover {
-  transform: scale(1.05) rotate(-2deg);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  transform: scale(1.04);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
 }
 
 @keyframes photo-enter {
-  from { opacity: 0; transform: scale(0.85); }
+  from { opacity: 0; transform: scale(0.9); }
   to   { opacity: 1; transform: scale(1); }
+}
+
+.hero-cred {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  color: var(--hero-cred);
 }
 
 .hero-content {
   animation: content-enter 0.8s ease 0.25s both;
+  min-width: 0;
 }
 
 @keyframes content-enter {
-  from { opacity: 0; transform: translateX(20px); }
+  from { opacity: 0; transform: translateX(16px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.68rem;
+  color: var(--hero-ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--hero-bracket);
+}
+
 .hero-content h1 {
-  font-size: clamp(2.6rem, 5.5vw, 3.6rem);
+  font-size: clamp(2.5rem, 5.2vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.12;
   margin-bottom: 0.3rem;
-  color: #ffffff;
+  color: var(--hero-ink);
 }
 
 /* Letter-voor-letter entrance, volledig in CSS.
-   Elke letter heeft in de HTML een --i; die stuurt de delay
-   én de kleur (wit -> goud over de hele naam). */
+   Elke letter heeft in de HTML een --i; die stuurt de delay én de kleur:
+   een verloop van inkt naar het accent over de hele naam (donker: wit→goud,
+   licht: inkt→groen), via de --hero-*-tokens. */
 .hero-content h1 .word {
   display: inline-block;
 }
@@ -329,7 +608,7 @@ main {
   display: inline-block;
   animation: letter-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: calc(0.2s + var(--i) * 0.045s);
-  color: color-mix(in srgb, #ffd700 calc(var(--i) * 10%), #ffffff);
+  color: color-mix(in srgb, var(--hero-name-tail) calc(var(--i) * 10%), var(--hero-ink));
 }
 
 @keyframes letter-in {
@@ -340,10 +619,12 @@ main {
 /* Roterende tagline, volledig in CSS: verticale carrousel.
    Laatste item is een kopie van het eerste voor een naadloze loop. */
 .hero-tagline {
-  font-size: 1.05rem;
-  color: #ffd700;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--hero-tagline);
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   height: 1.7em;
   overflow: hidden;
 }
@@ -368,55 +649,70 @@ main {
 }
 
 .hero-desc {
-  color: rgba(255, 255, 255, 0.82);
-  margin-bottom: 1.25rem;
+  color: var(--hero-ink);
+  max-width: 42ch;
+  margin-bottom: 0;
 }
 
-.hero-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  list-style: none;
+/* Mono-uitleeskolom: STATUS / FOCUS / LOCATIE / CONTACT. */
+.hero-readout {
+  display: grid;
+  gap: 0.85rem;
+  align-content: center;
+  padding-left: 1.75rem;
+  border-left: 1px solid var(--hero-line);
+  animation: content-enter 0.8s ease 0.4s both;
 }
 
-.hero-info li {
-  background: rgba(255, 255, 255, 0.10);
-  color: #f5f5dc;
+.hero-readout > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.hero-readout dt {
+  font-size: 0.64rem;
+  color: var(--hero-ink-soft);
+}
+
+.hero-readout dd {
+  font-family: var(--font-mono);
   font-size: 0.82rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 99px;
-  border: 1px solid rgba(255, 215, 0, 0.35);
-  transition: background 0.2s, transform 0.2s;
+  color: var(--hero-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
-.hero-info li:hover {
-  background: rgba(255, 215, 0, 0.18);
-  transform: translateY(-1px);
+.hero-readout a {
+  color: var(--hero-link);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.hero-info li.hero-badge {
-  background: var(--accent-yellow);
-  color: #002d19;
-  font-weight: 700;
-  border-color: transparent;
-  animation: badge-pulse 2.5s ease-out infinite;
+.hero-readout a:hover { color: var(--hero-link-hover); }
+
+.hero-readout .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hero-dot);
+  flex: none;
+  box-shadow: 0 0 0 0 rgba(242, 194, 0, 0.55);
+  animation: status-pulse 2.4s ease-out infinite;
 }
 
-@keyframes badge-pulse {
+@keyframes status-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(242, 194, 0, 0.55); }
-  70%  { box-shadow: 0 0 0 10px rgba(242, 194, 0, 0); }
+  70%  { box-shadow: 0 0 0 8px rgba(242, 194, 0, 0); }
   100% { box-shadow: 0 0 0 0 rgba(242, 194, 0, 0); }
 }
 
-.hero-info li.hero-badge:hover {
-  background: var(--accent-yellow-soft);
-}
-
-/* ── Stats strip ─────────────────────────────────── */
+/* ── Stats: uitleescluster ───────────────────────── */
 .stats-strip {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -425,11 +721,11 @@ main {
 }
 
 .stat {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem 1rem;
+  gap: 0.35rem;
+  padding: 1.4rem 1rem;
   text-align: center;
   border-right: 1px solid var(--border);
   transition: background 0.2s;
@@ -440,24 +736,38 @@ main {
 }
 
 .stat:hover {
-  background: var(--accent-light);
+  background: var(--surface-2);
 }
 
-.stat-number {
+.stat-number,
+.stat-value {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
+  font-family: var(--font-heading);
   background: linear-gradient(135deg, var(--accent), #0a7d44);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Actief 'OPEN'-veld: subtiele tint op de cel markeert 'm als de actieve
+   readout; de waarde krijgt een leesbare accentkleur (goud-op-wit zou zakken
+   qua contrast, dus donker goud in licht, helder goud in donker). */
+.stat--status {
+  background: var(--status-bg);
+}
+
+.stat--status .stat-value {
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: var(--status-ink);
+  letter-spacing: 0.04em;
+}
+
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.64rem;
   color: var(--text-muted);
-  margin-top: 0.4rem;
-  font-weight: 500;
 }
 
 /* ── Cards ───────────────────────────────────────── */
@@ -490,8 +800,8 @@ main {
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
   background: var(--accent-light);
-  border-left: 4px solid var(--accent-yellow);
-  border-radius: 8px;
+  border-left: 3px solid var(--accent-yellow);
+  border-radius: var(--radius-sm);
 }
 
 .stage-callout p {
@@ -511,19 +821,21 @@ main {
 
 /* ── Button ──────────────────────────────────────── */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   margin-top: 1.25rem;
   padding: 0.65rem 1.4rem;
   background: var(--accent);
-  color: #fff;
-  border-radius: 8px;
+  color: var(--on-accent);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
-  border: none;
+  font-weight: 600;
+  border: 1px solid var(--accent);
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, color 0.2s;
   position: relative;
   overflow: hidden;
 }
@@ -549,13 +861,26 @@ main {
 
 .btn:hover {
   background: var(--accent-hover);
+  border-color: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 66, 37, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 66, 37, 0.35);
 }
 
 .btn:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+/* Secundaire actie: contour i.p.v. vlak — duidelijke hiërarchie. */
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--ghost:hover {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 /* ── Focus styles ────────────────────────────────── */
@@ -566,13 +891,24 @@ main {
 }
 
 /* ── Projects section ────────────────────────────── */
+/* Sectiekop met 'sector'-markering (S2 /) en meetlijn eronder. */
 .section-heading {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1.25rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
   padding-bottom: 0.5rem;
   position: relative;
+}
+
+.section-heading::before {
+  content: 'S2 /';
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  align-self: center;
 }
 
 .section-heading::after {
@@ -607,10 +943,11 @@ main {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
   position: relative;
 }
 
+/* Timing-balk: vult bij hover van links, als een sectortijd. */
 .project-card::after {
   content: '';
   position: absolute;
@@ -621,7 +958,8 @@ main {
   background: linear-gradient(90deg, var(--accent), var(--accent-yellow));
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
+  z-index: 2;
 }
 
 .project-card:hover::after {
@@ -631,6 +969,7 @@ main {
 .project-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
 }
 
 .project-card-link {
@@ -662,9 +1001,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transition: background 0.3s;
 }
 
@@ -682,12 +1023,21 @@ main {
 .project-card-body h3 {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   transition: color 0.2s;
 }
 
 .project-card:hover .project-card-body h3 {
   color: var(--accent);
+}
+
+/* Mono meta-regel: rol · stack · discipline. */
+.card-meta {
+  font-size: 0.64rem;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px dashed var(--border);
 }
 
 .project-card-body p {
@@ -701,7 +1051,7 @@ main {
 .project-card-link-text {
   font-size: 0.85rem;
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
   display: inline-block;
   transition: transform 0.25s ease;
 }
@@ -738,9 +1088,9 @@ main {
   width: 44px;
   height: 44px;
   background: var(--accent);
-  color: white;
+  color: var(--on-accent);
   border: none;
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
   font-size: 1.1rem;
   cursor: pointer;
   opacity: 0;
@@ -769,6 +1119,7 @@ main {
 /* ── Project detail pages ────────────────────────── */
 .project-detail {
   max-width: 750px;
+  margin: 0 auto;
   padding: 3rem 0;
 }
 
@@ -784,11 +1135,22 @@ main {
   margin: 2rem 0 0.75rem;
 }
 
+/* Mono 'sector'-markering vóór elke tussenkop op detailpagina's. */
 .project-detail h3 {
   font-size: 1.05rem;
   font-weight: 600;
   margin: 1.5rem 0 0.5rem;
   color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.project-detail h3::before {
+  content: '//';
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
 }
 
 .project-detail p {
@@ -830,7 +1192,9 @@ main {
   border-radius: 999px;
   color: var(--accent);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   font-weight: 600;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-sm);
@@ -843,7 +1207,7 @@ main {
 
 .back-link:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   box-shadow: var(--shadow-md);
   transform: translateX(-2px);
 }
@@ -883,20 +1247,46 @@ footer a:hover {
 }
 
 /* ── Responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero-inner {
-    flex-direction: column;
+    grid-template-columns: auto 1fr;
+    gap: 1.75rem;
+  }
+
+  /* Uitleeskolom onder de naam i.p.v. ernaast. */
+  .hero-readout {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0;
+    padding-top: 1.25rem;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 2.5rem 0 2rem;
+    justify-items: center;
     gap: 1.5rem;
   }
 
-  .hero-info {
-    justify-content: center;
+  .hero-eyebrow { justify-content: center; }
+
+  .hero-desc { margin-left: auto; margin-right: auto; }
+
+  .hero-readout {
+    text-align: left;
+    justify-items: start;
   }
 
   .nav-links {
-    gap: 1.25rem;
+    gap: 1.1rem;
   }
 
   main {
@@ -908,13 +1298,15 @@ footer a:hover {
   }
 
   .stats-strip {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .stat {
-    flex: 1 0 calc(33% - 1rem);
-    min-width: 80px;
-  }
+  /* Onderste rij geen dubbele rand. */
+  .stat:nth-child(3),
+  .stat:nth-child(4) { border-bottom: none; }
+  .stat:nth-child(even) { border-right: none; }
+  .stat:nth-child(1),
+  .stat:nth-child(2) { border-bottom: 1px solid var(--border); }
 
   .back-top {
     bottom: 1.25rem;
@@ -1121,7 +1513,7 @@ footer a:hover {
 
 .demo-beats li.is-active::before {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 /* ── Live 'probeer het zelf'-demo (Browser Tech) ───── */
@@ -1133,7 +1525,7 @@ footer a:hover {
 .demo.is-live .demo-beats li.is-done::before {
   content: '✓';
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   animation: demoBeatPop 0.25s ease;
 }
 
