@@ -30,6 +30,7 @@
         <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
         <li class="theme-item">
           <input type="checkbox" id="theme-switch" class="theme-switch" role="switch" aria-label="Wissel licht of donker thema / Toggle light or dark theme" />
+          <script>(function(){var s=document.getElementById("theme-switch");if(!s)return;try{if(localStorage.getItem("theme-switch")==="1")s.checked=true;}catch(e){}s.addEventListener("change",function(){try{localStorage.setItem("theme-switch",s.checked?"1":"0");}catch(e){}});})();</script>
           <label for="theme-switch" class="theme-toggle" title="Licht / donker">
             <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
             <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
@@ -44,89 +45,147 @@
     </nav>
 
     <main id="main">
-      <div class="project-detail">
+      <div class="case">
         <a href="index.html#projecten" class="back-link"><span class="back-arrow" aria-hidden="true">←</span><span data-lang="nl">Terug naar projecten</span><span data-lang="en">Back to projects</span></a>
-        <h1>Movie Matching</h1>
 
-        <h2><span data-lang="nl">Beschrijving</span><span data-lang="en">Description</span></h2>
-        <p data-lang="nl">
-          Movie Matching is een webapplicatie die gebruikers helpt films en
-          tv-series te ontdekken. Gebruikers krijgen persoonlijke aanbevelingen
-          op basis van hun favoriete genres en kunnen hun favoriete titels
-          opslaan in hun account. Het project gebruikt de TMDB-API om actuele
-          film- en seriedata op te halen.
+        <p class="case-eyebrow">Project / <span data-lang="nl">Schoolproject</span><span data-lang="en">School project</span></p>
+        <h1 class="case-title">
+          Movie Matching
+          <span class="case-title-sub"><span data-lang="nl">Films &amp; series ontdekken — full-stack</span><span data-lang="en">Discover movies &amp; series — full-stack</span></span>
+        </h1>
+        <p class="case-summary">
+          <span data-lang="nl">Een full-stack webapp die films en tv-series ontsluit met persoonlijke aanbevelingen, accounts en favorieten — gevoed door de TMDB-API.</span>
+          <span data-lang="en">A full-stack web app for discovering movies and TV shows with personalized recommendations, accounts and favorites — powered by the TMDB API.</span>
         </p>
-        <p data-lang="en">
-          Movie Matching is a web application that helps users discover movies
-          and TV shows. Users can receive personalized recommendations based on
-          their favorite genres and save their favorite titles to their account.
-          The project leverages the TMDB API to fetch up-to-date movie and
-          series data.
-        </p>
-        <img
-          src="img/moviematch.jpg"
-          alt="Screenshot van de Movie Matching-webapp met filmoverzicht"
-          width="1400"
-          height="715"
-          loading="lazy"
-        />
 
-        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
-        <ul data-lang="nl">
-          <li>Trending en Now Playing: blader door populaire en nu draaiende films.</li>
-          <li>Persoonlijke aanbevelingen: krijg filmsuggesties op basis van gekozen genres.</li>
-          <li>Zoekfunctie: zoek naar films en tv-series via een geïntegreerde zoekbalk.</li>
-          <li>Accountbeheer: gebruikers kunnen zich registreren, inloggen en hun profiel beheren.</li>
-          <li>Favorieten: gebruikers kunnen een lijst met favoriete films opslaan en beheren.</li>
-          <li>Profielfoto's: gebruikers kunnen hun eigen profielfoto uploaden en aanpassen.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Trending and Now Playing: Browse popular and currently playing movies.</li>
-          <li>Personalized Recommendations: Get movie suggestions based on selected genres.</li>
-          <li>Search Functionality: Search for movies and TV shows using an integrated search bar.</li>
-          <li>User Account Management: Users can register, log in, and manage their profiles.</li>
-          <li>Favorites: Users can save and manage a list of their favorite movies.</li>
-          <li>Profile Picture Uploads: Users can upload and customize their profile pictures.</li>
-        </ul>
+        <section class="dossier">
+          <div class="dossier-main">
+            <figure class="annot-stage">
+              <img
+                src="img/moviematch.jpg"
+                alt="Screenshot van de Movie Matching-webapp met filmoverzicht"
+                width="1400"
+                height="715"
+                loading="lazy"
+              />
+              <button type="button" class="pin" data-pin="1" style="--x: 48%; --y: 5%" aria-label="1 — Zoekfunctie">1</button>
+              <button type="button" class="pin" data-pin="2" style="--x: 50%; --y: 31%" aria-label="2 — Trending films">2</button>
+              <button type="button" class="pin" data-pin="3" style="--x: 25%; --y: 74%" aria-label="3 — Now Playing films">3</button>
+              <span class="annot-dim">◄ 1400 × 715 ►</span>
+            </figure>
+            <ol class="annot-legend">
+              <li>
+                <span class="n">1</span>
+                <span><span data-lang="nl">Zoekfunctie: zoek films en tv-series via de zoekbalk.</span><span data-lang="en">Search: find movies and TV shows through the search bar.</span></span>
+              </li>
+              <li>
+                <span class="n">2</span>
+                <span><span data-lang="nl">Trending: blader door populaire films in een carousel.</span><span data-lang="en">Trending: browse popular movies in a carousel.</span></span>
+              </li>
+              <li>
+                <span class="n">3</span>
+                <span><span data-lang="nl">Now Playing: films die nu in de bioscoop draaien, in een aparte rij.</span><span data-lang="en">Now Playing: films currently in theaters, in a separate row.</span></span>
+              </li>
+              <li class="no-pin">
+                <span class="n">4</span>
+                <span>
+                  <span data-lang="nl">Accounts, favorieten, genre-aanbevelingen en profielfoto's.</span><span data-lang="en">Accounts, favorites, genre recommendations and profile pictures.</span>
+                  <span class="live-tag" data-lang="nl">→ na het inloggen</span><span class="live-tag" data-lang="en">→ after logging in</span>
+                </span>
+              </li>
+            </ol>
+          </div>
 
-        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
-        <ul data-lang="nl">
-          <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
-          <li>Backend: Node.js, Express.js</li>
-          <li>Database: MongoDB</li>
-          <li>Authenticatie: Bcrypt voor het hashen van wachtwoorden en Express-session voor sessiebeheer</li>
-          <li>API: TMDB-API voor film- en seriedata</li>
-          <li>Bestandsverwerking: Multer voor het uploaden van profielfoto's</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
-          <li>Backend: Node.js, Express.js</li>
-          <li>Database: MongoDB</li>
-          <li>Authentication: Bcrypt for password hashing and Express-session for session management</li>
-          <li>API: TMDB API for movie and series data</li>
-          <li>File Handling: Multer for profile picture uploads</li>
-        </ul>
+          <aside class="dossier-spec">
+            <dl>
+              <div>
+                <dt><span data-lang="nl">Rol</span><span data-lang="en">Role</span></dt>
+                <dd><span data-lang="nl">Full-stack-developer</span><span data-lang="en">Full-stack developer</span></dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>Node.js · Express · MongoDB · EJS · TMDB</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd><span data-lang="nl">Schoolproject</span><span data-lang="en">School project</span></dd>
+              </div>
+            </dl>
+            <div class="dossier-actions">
+              <a class="btn btn--ghost" href="https://github.com/AsianToko/MM" target="_blank" rel="noopener">Source · GitHub</a>
+            </div>
+          </aside>
+        </section>
 
-        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">Key Learning Outcomes</span></h3>
-        <ul data-lang="nl">
-          <li>Werken met externe API's (TMDB) en het verwerken van JSON-data.</li>
-          <li>Het implementeren van gebruikersauthenticatie en sessiebeheer.</li>
-          <li>MongoDB gebruiken om gebruikersdata en favorieten op te slaan.</li>
-          <li>Pagina's dynamisch renderen met EJS.</li>
-          <li>Bestandsuploads afhandelen en deze veilig opslaan.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Working with external APIs (TMDB) and processing JSON data.</li>
-          <li>Implementing user authentication and session management.</li>
-          <li>Using MongoDB to store user data and favorites.</li>
-          <li>Dynamically rendering pages with EJS.</li>
-          <li>Handling file uploads and securely storing them.</li>
-        </ul>
+        <div class="case-body">
+          <h2 class="sec"><span class="sec-no">S1</span><span data-lang="nl">Beschrijving</span><span data-lang="en">Description</span></h2>
+          <p data-lang="nl">
+            Movie Matching is een webapplicatie die gebruikers helpt films en
+            tv-series te ontdekken. Gebruikers krijgen persoonlijke aanbevelingen
+            op basis van hun favoriete genres en kunnen hun favoriete titels
+            opslaan in hun account. Het project gebruikt de TMDB-API om actuele
+            film- en seriedata op te halen.
+          </p>
+          <p data-lang="en">
+            Movie Matching is a web application that helps users discover movies
+            and TV shows. Users can receive personalized recommendations based on
+            their favorite genres and save their favorite titles to their account.
+            The project leverages the TMDB API to fetch up-to-date movie and
+            series data.
+          </p>
 
-        <h3>Links</h3>
-        <ul>
-          <li><a href="https://github.com/AsianToko/MM" target="_blank"><span data-lang="nl">GitHub-repository →</span><span data-lang="en">GitHub repository →</span></a></li>
-        </ul>
+          <h2 class="sec"><span class="sec-no">S2</span><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h2>
+          <ul data-lang="nl">
+            <li>Trending en Now Playing: blader door populaire en nu draaiende films.</li>
+            <li>Persoonlijke aanbevelingen: krijg filmsuggesties op basis van gekozen genres.</li>
+            <li>Zoekfunctie: zoek naar films en tv-series via een geïntegreerde zoekbalk.</li>
+            <li>Accountbeheer: gebruikers kunnen zich registreren, inloggen en hun profiel beheren.</li>
+            <li>Favorieten: gebruikers kunnen een lijst met favoriete films opslaan en beheren.</li>
+            <li>Profielfoto's: gebruikers kunnen hun eigen profielfoto uploaden en aanpassen.</li>
+          </ul>
+          <ul data-lang="en">
+            <li>Trending and Now Playing: Browse popular and currently playing movies.</li>
+            <li>Personalized Recommendations: Get movie suggestions based on selected genres.</li>
+            <li>Search Functionality: Search for movies and TV shows using an integrated search bar.</li>
+            <li>User Account Management: Users can register, log in, and manage their profiles.</li>
+            <li>Favorites: Users can save and manage a list of their favorite movies.</li>
+            <li>Profile Picture Uploads: Users can upload and customize their profile pictures.</li>
+          </ul>
+
+          <h2 class="sec"><span class="sec-no">S3</span><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h2>
+          <ul data-lang="nl">
+            <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
+            <li>Backend: Node.js, Express.js</li>
+            <li>Database: MongoDB</li>
+            <li>Authenticatie: Bcrypt voor het hashen van wachtwoorden en Express-session voor sessiebeheer</li>
+            <li>API: TMDB-API voor film- en seriedata</li>
+            <li>Bestandsverwerking: Multer voor het uploaden van profielfoto's</li>
+          </ul>
+          <ul data-lang="en">
+            <li>Frontend: HTML, CSS, EJS (Embedded JavaScript Templates)</li>
+            <li>Backend: Node.js, Express.js</li>
+            <li>Database: MongoDB</li>
+            <li>Authentication: Bcrypt for password hashing and Express-session for session management</li>
+            <li>API: TMDB API for movie and series data</li>
+            <li>File Handling: Multer for profile picture uploads</li>
+          </ul>
+
+          <h2 class="sec"><span class="sec-no">S4</span><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">Key learning outcomes</span></h2>
+          <ul data-lang="nl">
+            <li>Werken met externe API's (TMDB) en het verwerken van JSON-data.</li>
+            <li>Het implementeren van gebruikersauthenticatie en sessiebeheer.</li>
+            <li>MongoDB gebruiken om gebruikersdata en favorieten op te slaan.</li>
+            <li>Pagina's dynamisch renderen met EJS.</li>
+            <li>Bestandsuploads afhandelen en deze veilig opslaan.</li>
+          </ul>
+          <ul data-lang="en">
+            <li>Working with external APIs (TMDB) and processing JSON data.</li>
+            <li>Implementing user authentication and session management.</li>
+            <li>Using MongoDB to store user data and favorites.</li>
+            <li>Dynamically rendering pages with EJS.</li>
+            <li>Handling file uploads and securely storing them.</li>
+          </ul>
+        </div>
       </div>
     </main>
 

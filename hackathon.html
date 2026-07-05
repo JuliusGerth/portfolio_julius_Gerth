@@ -31,6 +31,7 @@
         <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
         <li class="theme-item">
           <input type="checkbox" id="theme-switch" class="theme-switch" role="switch" aria-label="Wissel licht of donker thema / Toggle light or dark theme" />
+          <script>(function(){var s=document.getElementById("theme-switch");if(!s)return;try{if(localStorage.getItem("theme-switch")==="1")s.checked=true;}catch(e){}s.addEventListener("change",function(){try{localStorage.setItem("theme-switch",s.checked?"1":"0");}catch(e){}});})();</script>
           <label for="theme-switch" class="theme-toggle" title="Licht / donker">
             <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
             <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
@@ -45,9 +46,21 @@
     </nav>
 
     <main id="main">
-      <div class="project-detail">
+      <div class="case">
         <a href="index.html#projecten" class="back-link"><span class="back-arrow" aria-hidden="true">←</span><span data-lang="nl">Terug naar projecten</span><span data-lang="en">Back to projects</span></a>
-        <h1>Hackathon</h1>
+
+        <p class="case-eyebrow">Project / <span data-lang="nl">Hackathon · team</span><span data-lang="en">Hackathon · team</span></p>
+        <h1 class="case-title">
+          Hackathon
+          <span class="case-title-sub"><span data-lang="nl">NEBULA-Xplorer — scroll-storytelling in 3D</span><span data-lang="en">NEBULA-Xplorer — scroll storytelling in 3D</span></span>
+        </h1>
+        <p class="case-summary">
+          <span data-lang="nl">Een one-page site voor een fictieve SRON-satellietmissie: al scrollend reis je van de aarde de ruimte in, tot aan een 3D-zwart gat gebouwd met Three.js — onder tijdsdruk gemaakt in teamverband.</span>
+          <span data-lang="en">A one-page site for a fictional SRON satellite mission: as you scroll you travel from Earth into space, up to a 3D black hole built with Three.js — made as a team under time pressure.</span>
+        </p>
+
+        <section class="dossier">
+          <div class="dossier-main">
         <!-- Zelf-vertellende demo: de GIF loopt (8,06s per lus, uit de frames gelezen) en de
              bijschriften lichten mee op met wat er op dat moment gebeurt. De <ol> is de
              toegankelijke bron van waarheid; demo-narrate.js maakt er een gesynchroniseerde
@@ -91,63 +104,86 @@
             </ol>
           </figcaption>
         </figure>
+          </div>
 
-        <h2><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
-        <p data-lang="nl">
-          Tijdens de hackathon werkten we in een team aan een webapplicatie onder tijdsdruk. Het project leerde mij hoe belangrijk het is om goed te communiceren en taken duidelijk te verdelen. Zonder goede afstemming gaat een website snel kapot.
-        </p>
-        <p data-lang="en">
-          During the hackathon we worked in a team on a web application under
-          time pressure. The project taught me how important it is to
-          communicate well and divide tasks clearly. Without good alignment, a
-          website breaks quickly.
-        </p>
+          <aside class="dossier-spec">
+            <dl>
+              <div>
+                <dt><span data-lang="nl">Rol</span><span data-lang="en">Role</span></dt>
+                <dd><span data-lang="nl">3D &amp; frontend (team)</span><span data-lang="en">3D &amp; frontend (team)</span></dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>Three.js · JavaScript · <span data-lang="nl">Scroll-storytelling</span><span data-lang="en">Scroll storytelling</span></dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd><span data-lang="nl">Hackathon (team)</span><span data-lang="en">Hackathon (team)</span></dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="dot" aria-hidden="true"></span>Live</dd>
+              </div>
+            </dl>
+            <div class="dossier-actions">
+              <a class="btn" href="https://sennahoving.github.io/Hackathon/" target="_blank" rel="noopener"><span data-lang="nl">Live bekijken →</span><span data-lang="en">View live →</span></a>
+              <a class="btn btn--ghost" href="https://github.com/sennahoving/Hackathon" target="_blank" rel="noopener">Source · GitHub</a>
+            </div>
+          </aside>
+        </section>
 
-        <h3><span data-lang="nl">Mijn rol en bijdragen</span><span data-lang="en">My role and contributions</span></h3>
-        <p data-lang="nl">
-          Binnen het team werkte ik vooral aan de 3D-elementen. Ik ben begonnen
-          met de astronauten die door de scène zouden bewegen, maar heb dat
-          onderdeel later overgedragen aan een teamgenoot om me volledig te
-          kunnen richten op het 3D-zwarte gat
-        </p>
-        <p data-lang="en">
-          Within the team I mainly worked on the 3D elements. I started out on
-          the astronauts that would move through the scene, but later handed
-          that part over to a teammate so I could focus fully on the 3D black
-          hole
-        </p>
+        <div class="case-body">
+          <h2 class="sec"><span class="sec-no">S1</span><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
+          <p data-lang="nl">
+            Tijdens de hackathon werkten we in een team aan een webapplicatie onder tijdsdruk. Het project leerde mij hoe belangrijk het is om goed te communiceren en taken duidelijk te verdelen. Zonder goede afstemming gaat een website snel kapot.
+          </p>
+          <p data-lang="en">
+            During the hackathon we worked in a team on a web application under
+            time pressure. The project taught me how important it is to
+            communicate well and divide tasks clearly. Without good alignment, a
+            website breaks quickly.
+          </p>
 
-        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
-        <ul data-lang="nl">
-          <li>HTML, CSS en JavaScript</li>
-          <li>Three.js voor het 3D-zwarte gat</li>
-          <li>Scroll-gedreven animaties</li>
-          <li>Responsive canvas dat meeschaalt met elk schermformaat</li>
-          <li>Git &amp; GitHub voor de samenwerking in het team</li>
-        </ul>
-        <ul data-lang="en">
-          <li>HTML, CSS and JavaScript</li>
-          <li>Three.js for the 3D black hole</li>
-          <li>Scroll-driven animations</li>
-          <li>Responsive canvas that scales with every screen size</li>
-          <li>Git &amp; GitHub for team collaboration</li>
-        </ul>
+          <h2 class="sec"><span class="sec-no">S2</span><span data-lang="nl">Mijn rol en bijdragen</span><span data-lang="en">My role and contributions</span></h2>
+          <p data-lang="nl">
+            Binnen het team werkte ik vooral aan de 3D-elementen. Ik ben begonnen
+            met de astronauten die door de scène zouden bewegen, maar heb dat
+            onderdeel later overgedragen aan een teamgenoot om me volledig te
+            kunnen richten op het 3D-zwarte gat.
+          </p>
+          <p data-lang="en">
+            Within the team I mainly worked on the 3D elements. I started out on
+            the astronauts that would move through the scene, but later handed
+            that part over to a teammate so I could focus fully on the 3D black
+            hole.
+          </p>
 
-        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h3>
-        <p data-lang="nl">
-          Communicatie binnen een team is key. Je moet constant op de hoogte zijn van wat anderen doen en problemen direct bespreken, anders loopt het project vast.
-        </p>
-        <p data-lang="en">
-          Communication within a team is key. You have to stay constantly aware
-          of what others are doing and address problems right away, otherwise the
-          project gets stuck.
-        </p>
+          <h2 class="sec"><span class="sec-no">S3</span><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h2>
+          <ul data-lang="nl">
+            <li>HTML, CSS en JavaScript</li>
+            <li>Three.js voor het 3D-zwarte gat</li>
+            <li>Scroll-gedreven animaties</li>
+            <li>Responsive canvas dat meeschaalt met elk schermformaat</li>
+            <li>Git &amp; GitHub voor de samenwerking in het team</li>
+          </ul>
+          <ul data-lang="en">
+            <li>HTML, CSS and JavaScript</li>
+            <li>Three.js for the 3D black hole</li>
+            <li>Scroll-driven animations</li>
+            <li>Responsive canvas that scales with every screen size</li>
+            <li>Git &amp; GitHub for team collaboration</li>
+          </ul>
 
-        <h3>Links</h3>
-        <ul>
-          <li><a href="https://sennahoving.github.io/Hackathon/" target="_blank"><span data-lang="nl">Bekijk het live project →</span><span data-lang="en">View the live project →</span></a></li>
-          <li><a href="https://github.com/sennahoving/Hackathon" target="_blank"><span data-lang="nl">GitHub-repository →</span><span data-lang="en">GitHub repository →</span></a></li>
-        </ul>
+          <h2 class="sec"><span class="sec-no">S4</span><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h2>
+          <p data-lang="nl">
+            Communicatie binnen een team is key. Je moet constant op de hoogte zijn van wat anderen doen en problemen direct bespreken, anders loopt het project vast.
+          </p>
+          <p data-lang="en">
+            Communication within a team is key. You have to stay constantly aware
+            of what others are doing and address problems right away, otherwise the
+            project gets stuck.
+          </p>
+        </div>
       </div>
     </main>
 

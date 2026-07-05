@@ -41,6 +41,7 @@
         </li>
         <li class="theme-item">
           <input type="checkbox" id="theme-switch" class="theme-switch" role="switch" aria-label="Wissel licht of donker thema / Toggle light or dark theme" />
+          <script>(function(){var s=document.getElementById("theme-switch");if(!s)return;try{if(localStorage.getItem("theme-switch")==="1")s.checked=true;}catch(e){}s.addEventListener("change",function(){try{localStorage.setItem("theme-switch",s.checked?"1":"0");}catch(e){}});})();</script>
           <label for="theme-switch" class="theme-toggle" title="Licht / donker">
             <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
             <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
@@ -59,44 +60,84 @@
     </nav>
 
     <main id="main">
-      <div class="project-detail">
+      <div class="case">
         <a href="index.html#projecten" class="back-link"
           ><span class="back-arrow" aria-hidden="true">←</span
           ><span data-lang="nl">Terug naar projecten</span
           ><span data-lang="en">Back to projects</span></a
         >
-        <h1>Browser Tech</h1>
-        <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
-        <picture>
-          <source srcset="img/browsertech.gif" media="(prefers-reduced-motion: no-preference)" />
-          <img
-            src="img/browsertech.png"
-            alt="Screenshot van de Browser Tech-webapplicatie"
-            width="1280"
-            height="800"
-            loading="lazy"
-          />
-        </picture>
 
-        <h2>
-          <span data-lang="nl">Over dit project</span
-          ><span data-lang="en">About this project</span>
-        </h2>
-        <p data-lang="nl">
-          In dit vak stond toegankelijkheid en robuustheid centraal. Het doel
-          was om een webapplicatie te bouwen die voor iedereen werkt, ongeacht
-          de browser, het apparaat of de internetverbinding. Ik leerde dat wat
-          voor mij als ontwikkelaar logisch voelt, niet altijd logisch is voor
-          de gebruiker.
-        </p>
-        <p data-lang="en">
-          This course focused on accessibility and robustness. The goal was to
-          build a web application that works for everyone, regardless of
-          browser, device or internet connection. I learned that what feels
-          logical to me as a developer isn't always logical for the user.
+        <p class="case-eyebrow">Project / <span data-lang="nl">Schoolproject</span><span data-lang="en">School project</span></p>
+        <h1 class="case-title">
+          Browser Tech
+          <span class="case-title-sub"><span data-lang="nl">Toegankelijk &amp; robuust via progressive enhancement</span><span data-lang="en">Accessible &amp; robust through progressive enhancement</span></span>
+        </h1>
+        <p class="case-summary">
+          <span data-lang="nl">Een webapplicatie die voor iedereen werkt — ongeacht browser, apparaat of verbinding. Gebouwd op semantische HTML en CSS, met JavaScript enkel als verrijking.</span>
+          <span data-lang="en">A web application that works for everyone — regardless of browser, device or connection. Built on semantic HTML and CSS, with JavaScript only as an enhancement.</span>
         </p>
 
-        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
+        <section class="dossier">
+          <div class="dossier-main">
+            <figure class="annot-stage">
+              <!-- GIF alleen voor wie animaties aan heeft staan; anders de statische screenshot -->
+              <picture>
+                <source srcset="img/browsertech.gif" media="(prefers-reduced-motion: no-preference)" />
+                <img
+                  src="img/browsertech.png"
+                  alt="Screenshot van de Browser Tech-webapplicatie"
+                  width="1280"
+                  height="800"
+                  loading="lazy"
+                />
+              </picture>
+              <span class="annot-dim">◄ 1280 × 800 ►</span>
+            </figure>
+          </div>
+
+          <aside class="dossier-spec">
+            <dl>
+              <div>
+                <dt><span data-lang="nl">Rol</span><span data-lang="en">Role</span></dt>
+                <dd><span data-lang="nl">Frontend / UX (toegankelijkheid)</span><span data-lang="en">Frontend / UX (accessibility)</span></dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>HTML · CSS · <span data-lang="nl">Progressive enhancement</span><span data-lang="en">Progressive enhancement</span></dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd><span data-lang="nl">Schoolproject</span><span data-lang="en">School project</span></dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="dot" aria-hidden="true"></span>Live</dd>
+              </div>
+            </dl>
+            <div class="dossier-actions">
+              <a class="btn" href="https://juliusgerth.github.io/Browser-Technology/" target="_blank" rel="noopener"><span data-lang="nl">Live bekijken →</span><span data-lang="en">View live →</span></a>
+              <a class="btn btn--ghost" href="https://github.com/JuliusGerth/Browser-Technology" target="_blank" rel="noopener">Source · GitHub</a>
+            </div>
+          </aside>
+        </section>
+
+        <div class="case-body">
+          <h2 class="sec"><span class="sec-no">S1</span><span data-lang="nl">Over dit project</span><span data-lang="en">About this project</span></h2>
+          <p data-lang="nl">
+            In dit vak stond toegankelijkheid en robuustheid centraal. Het doel
+            was om een webapplicatie te bouwen die voor iedereen werkt, ongeacht
+            de browser, het apparaat of de internetverbinding. Ik leerde dat wat
+            voor mij als ontwikkelaar logisch voelt, niet altijd logisch is voor
+            de gebruiker.
+          </p>
+          <p data-lang="en">
+            This course focused on accessibility and robustness. The goal was to
+            build a web application that works for everyone, regardless of
+            browser, device or internet connection. I learned that what feels
+            logical to me as a developer isn't always logical for the user.
+          </p>
+
+          <h2 class="sec"><span class="sec-no">S2</span><span data-lang="nl">Probeer het zelf</span><span data-lang="en">Try it yourself</span></h2>
         <!-- Live 'probeer het zelf'-demo: een werkend fragment uit het echte aangifteformulier.
              De genummerde lijst is de toegankelijke bron van waarheid; demo-live.js vinkt de
              functies af terwijl je ze in het fragment gebruikt. Zonder JS: gewone lijst, en het
@@ -173,52 +214,30 @@
           </div>
         </figure>
 
-        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies Used</span></h3>
-        <ul data-lang="nl">
-          <li>HTML met semantische formulierelementen (fieldset, datalist, native validatie)</li>
-          <li>CSS voor styling én validatie-feedback</li>
-          <li>JavaScript alleen als verrijking, niet als vereiste (progressive enhancement)</li>
-        </ul>
-        <ul data-lang="en">
-          <li>HTML with semantic form elements (fieldset, datalist, native validation)</li>
-          <li>CSS for styling and validation feedback</li>
-          <li>JavaScript only as an enhancement, never a requirement (progressive enhancement)</li>
-        </ul>
+          <h2 class="sec"><span class="sec-no">S3</span><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h2>
+          <ul data-lang="nl">
+            <li>HTML met semantische formulierelementen (fieldset, datalist, native validatie)</li>
+            <li>CSS voor styling én validatie-feedback</li>
+            <li>JavaScript alleen als verrijking, niet als vereiste (progressive enhancement)</li>
+          </ul>
+          <ul data-lang="en">
+            <li>HTML with semantic form elements (fieldset, datalist, native validation)</li>
+            <li>CSS for styling and validation feedback</li>
+            <li>JavaScript only as an enhancement, never a requirement (progressive enhancement)</li>
+          </ul>
 
-        <h3>
-          <span data-lang="nl">Wat ik heb geleerd</span
-          ><span data-lang="en">What I learned</span>
-        </h3>
-        <p data-lang="nl">
-          Je moet dingen echt duidelijk maken voor de gebruiker. Progressive
-          enhancement zorgt ervoor dat je website altijd werkt, ook zonder
-          JavaScript of met een trage verbinding.
-        </p>
-        <p data-lang="en">
-          You really have to make things clear for the user. Progressive
-          enhancement ensures your website always works, even without JavaScript
-          or on a slow connection.
-        </p>
-
-        <h3>Links</h3>
-        <ul>
-          <li>
-            <a
-              href="https://juliusgerth.github.io/Browser-Technology/"
-              target="_blank"
-              ><span data-lang="nl">Bekijk het live project →</span
-              ><span data-lang="en">View the live project →</span></a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/JuliusGerth/Browser-Technology"
-              target="_blank"
-              ><span data-lang="nl">GitHub-repository →</span
-              ><span data-lang="en">GitHub repository →</span></a
-            >
-          </li>
-        </ul>
+          <h2 class="sec"><span class="sec-no">S4</span><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h2>
+          <p data-lang="nl">
+            Je moet dingen echt duidelijk maken voor de gebruiker. Progressive
+            enhancement zorgt ervoor dat je website altijd werkt, ook zonder
+            JavaScript of met een trage verbinding.
+          </p>
+          <p data-lang="en">
+            You really have to make things clear for the user. Progressive
+            enhancement ensures your website always works, even without JavaScript
+            or on a slow connection.
+          </p>
+        </div>
       </div>
     </main>
 

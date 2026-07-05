@@ -30,6 +30,7 @@
         <li><a href="index.html#projecten"><span data-lang="nl">Projecten</span><span data-lang="en">Projects</span></a></li>
         <li class="theme-item">
           <input type="checkbox" id="theme-switch" class="theme-switch" role="switch" aria-label="Wissel licht of donker thema / Toggle light or dark theme" />
+          <script>(function(){var s=document.getElementById("theme-switch");if(!s)return;try{if(localStorage.getItem("theme-switch")==="1")s.checked=true;}catch(e){}s.addEventListener("change",function(){try{localStorage.setItem("theme-switch",s.checked?"1":"0");}catch(e){}});})();</script>
           <label for="theme-switch" class="theme-toggle" title="Licht / donker">
             <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
             <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
@@ -44,82 +45,122 @@
     </nav>
 
     <main id="main">
-      <div class="project-detail">
+      <div class="case">
         <a href="index.html#projecten" class="back-link"><span class="back-arrow" aria-hidden="true">←</span><span data-lang="nl">Terug naar projecten</span><span data-lang="en">Back to projects</span></a>
-        <h1>Rest Quest</h1>
-        <img
-          src="img/rest.jpg"
-          alt="Rest Quest-logo: een hoofd in profiel met daarin een mediterend figuur in een wolk"
-          class="img-portrait"
-          width="480"
-          height="643"
-        />
-        <h2><span data-lang="nl">Project Beyond — Rest Quest</span><span data-lang="en">Project Beyond — Rest Quest</span></h2>
-        <p data-lang="nl">
-          Als onderdeel van team 4 heb ik meegewerkt aan de ontwikkeling van Rest Quest, een interactief, schermloos product dat eindexamenscholieren helpt om beter te slapen door middel van fysieke en mindful activiteiten.
-        </p>
-        <p data-lang="en">
-          As part of team 4, I helped develop Rest Quest, an interactive,
-          screenless product that helps final-year students sleep better through
-          physical and mindful activities.
+
+        <p class="case-eyebrow">Project / <span data-lang="nl">Schoolproject · team</span><span data-lang="en">School project · team</span></p>
+        <h1 class="case-title">
+          Rest Quest
+          <span class="case-title-sub"><span data-lang="nl">Schermloos product voor betere slaap</span><span data-lang="en">A screenless product for better sleep</span></span>
+        </h1>
+        <p class="case-summary">
+          <span data-lang="nl">Een interactief, schermloos product dat eindexamenscholieren helpt beter te slapen via fysieke en mindful activiteiten — van gebruikersonderzoek tot een werkend Arduino-prototype.</span>
+          <span data-lang="en">An interactive, screenless product that helps final-year students sleep better through physical and mindful activities — from user research to a working Arduino prototype.</span>
         </p>
 
-        <h3><span data-lang="nl">Mijn rol en bijdragen</span><span data-lang="en">My role and contributions</span></h3>
-        <p data-lang="nl">Ik was actief betrokken bij het gehele ontwerp- en ontwikkelingsproces. Mijn bijdragen:</p>
-        <p data-lang="en">I was actively involved in the entire design and development process. My contributions:</p>
-        <ul data-lang="nl">
-          <li><strong>Onderzoek &amp; Interviews:</strong> Ik heb interviews gehouden met studenten om hun slaapgewoonten en stressfactoren te begrijpen, wat onze ontwerpkeuzes heeft bepaald.</li>
-          <li><strong>Testplan &amp; Prototypes:</strong> Samen met het team heb ik testplannen opgesteld en prototypes (Lo-Fi, Me-Fi en Hi-Fi) getest en verbeterd op basis van gebruikersfeedback.</li>
-          <li><strong>Conceptontwikkeling:</strong> Ik dacht mee over de kernfuncties van het product, zoals de kaartjesinteractie, de afstandssensor en de auditieve timer.</li>
-          <li><strong>Techniek:</strong> Ik werkte aan de integratie van sensoren (afstands- en druksensoren) en een mp3-speler op een Arduino voor de interactieve ervaring.</li>
-          <li><strong>Evaluatie &amp; Verbetering:</strong> Door feedbacksessies te leiden hielp ik het product verbeteren, van de fysieke knop tot een visuele timer met LED-strips.</li>
-        </ul>
-        <ul data-lang="en">
-          <li><strong>Research &amp; Interviews:</strong> I interviewed students to understand their sleep habits and stress factors, which shaped our design choices.</li>
-          <li><strong>Test plan &amp; Prototypes:</strong> Together with the team I set up test plans and tested and improved prototypes (Lo-Fi, Me-Fi and Hi-Fi) based on user feedback.</li>
-          <li><strong>Concept development:</strong> I helped think through the product's core features, such as the card interaction, the distance sensor and the auditory timer.</li>
-          <li><strong>Engineering:</strong> I worked on integrating sensors (distance and pressure sensors) and an mp3 player on an Arduino for the interactive experience.</li>
-          <li><strong>Evaluation &amp; Improvement:</strong> By leading feedback sessions I helped improve the product, from the physical button to a visual timer with LED strips.</li>
-        </ul>
+        <section class="dossier">
+          <div class="dossier-main">
+            <figure class="annot-stage annot-stage--portrait">
+              <img
+                src="img/rest.jpg"
+                alt="Rest Quest-logo: een hoofd in profiel met daarin een mediterend figuur in een wolk"
+                width="480"
+                height="643"
+                loading="lazy"
+              />
+            </figure>
+          </div>
 
-        <h3><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h3>
-        <ul data-lang="nl">
-          <li>Kaartjes met fysieke en mindful oefeningen die je voor het slapen doet.</li>
-          <li>Afstandssensor die merkt wanneer je bij het product bent.</li>
-          <li>Druksensoren en een fysieke knop voor de interactie.</li>
-          <li>Auditieve timer met geluid via een mp3-speler.</li>
-          <li>Visuele timer met LED-strips.</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Cards with physical and mindful exercises you do before sleep.</li>
-          <li>Distance sensor that notices when you're near the product.</li>
-          <li>Pressure sensors and a physical button for interaction.</li>
-          <li>Auditory timer with sound through an mp3 player.</li>
-          <li>Visual timer with LED strips.</li>
-        </ul>
+          <aside class="dossier-spec">
+            <dl>
+              <div>
+                <dt><span data-lang="nl">Rol</span><span data-lang="en">Role</span></dt>
+                <dd><span data-lang="nl">UX &amp; techniek (team 4)</span><span data-lang="en">UX &amp; engineering (team 4)</span></dd>
+              </div>
+              <div>
+                <dt>Stack</dt>
+                <dd>Arduino · C++ · <span data-lang="nl">Sensoren</span><span data-lang="en">Sensors</span> · Figma</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd><span data-lang="nl">Schoolproject · Project Beyond</span><span data-lang="en">School project · Project Beyond</span></dd>
+              </div>
+              <div>
+                <dt><span data-lang="nl">Product</span><span data-lang="en">Product</span></dt>
+                <dd><span data-lang="nl">Fysiek prototype</span><span data-lang="en">Physical prototype</span></dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
 
-        <h3><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h3>
-        <ul data-lang="nl">
-          <li>Hardware: Arduino, afstandssensor, druksensor, mp3-speler, LED-strips</li>
-          <li>Software: C++ (Arduino-programmering)</li>
-          <li>Ontwerptools: Figma, Adobe Illustrator</li>
-        </ul>
-        <ul data-lang="en">
-          <li>Hardware: Arduino, distance sensor, pressure sensor, mp3 player, LED strips</li>
-          <li>Software: C++ (Arduino programming)</li>
-          <li>Design tools: Figma, Adobe Illustrator</li>
-        </ul>
+        <div class="case-body">
+          <h2 class="sec"><span class="sec-no">S1</span><span data-lang="nl">Over het project</span><span data-lang="en">About the project</span></h2>
+          <p data-lang="nl">
+            Als onderdeel van team 4 heb ik meegewerkt aan de ontwikkeling van Rest Quest, een interactief, schermloos product dat eindexamenscholieren helpt om beter te slapen door middel van fysieke en mindful activiteiten.
+          </p>
+          <p data-lang="en">
+            As part of team 4, I helped develop Rest Quest, an interactive,
+            screenless product that helps final-year students sleep better through
+            physical and mindful activities.
+          </p>
 
-        <h3><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h3>
-        <p data-lang="nl">
-          Dit project leerde mij het belang van een gebruikersgericht ontwerpproces, van onderzoek tot iteratief prototypen en testen. Ik heb praktische ervaring opgedaan met hardware-integratie en samenwerken in een multidisciplinair team.
-        </p>
-        <p data-lang="en">
-          This project taught me the importance of a user-centred design
-          process, from research to iterative prototyping and testing. I gained
-          hands-on experience with hardware integration and collaborating in a
-          multidisciplinary team.
-        </p>
+          <h2 class="sec"><span class="sec-no">S2</span><span data-lang="nl">Mijn rol en bijdragen</span><span data-lang="en">My role and contributions</span></h2>
+          <p data-lang="nl">Ik was actief betrokken bij het gehele ontwerp- en ontwikkelingsproces. Mijn bijdragen:</p>
+          <p data-lang="en">I was actively involved in the entire design and development process. My contributions:</p>
+          <ul data-lang="nl">
+            <li><strong>Onderzoek &amp; Interviews:</strong> Ik heb interviews gehouden met studenten om hun slaapgewoonten en stressfactoren te begrijpen, wat onze ontwerpkeuzes heeft bepaald.</li>
+            <li><strong>Testplan &amp; Prototypes:</strong> Samen met het team heb ik testplannen opgesteld en prototypes (Lo-Fi, Me-Fi en Hi-Fi) getest en verbeterd op basis van gebruikersfeedback.</li>
+            <li><strong>Conceptontwikkeling:</strong> Ik dacht mee over de kernfuncties van het product, zoals de kaartjesinteractie, de afstandssensor en de auditieve timer.</li>
+            <li><strong>Techniek:</strong> Ik werkte aan de integratie van sensoren (afstands- en druksensoren) en een mp3-speler op een Arduino voor de interactieve ervaring.</li>
+            <li><strong>Evaluatie &amp; Verbetering:</strong> Door feedbacksessies te leiden hielp ik het product verbeteren, van de fysieke knop tot een visuele timer met LED-strips.</li>
+          </ul>
+          <ul data-lang="en">
+            <li><strong>Research &amp; Interviews:</strong> I interviewed students to understand their sleep habits and stress factors, which shaped our design choices.</li>
+            <li><strong>Test plan &amp; Prototypes:</strong> Together with the team I set up test plans and tested and improved prototypes (Lo-Fi, Me-Fi and Hi-Fi) based on user feedback.</li>
+            <li><strong>Concept development:</strong> I helped think through the product's core features, such as the card interaction, the distance sensor and the auditory timer.</li>
+            <li><strong>Engineering:</strong> I worked on integrating sensors (distance and pressure sensors) and an mp3 player on an Arduino for the interactive experience.</li>
+            <li><strong>Evaluation &amp; Improvement:</strong> By leading feedback sessions I helped improve the product, from the physical button to a visual timer with LED strips.</li>
+          </ul>
+
+          <h2 class="sec"><span class="sec-no">S3</span><span data-lang="nl">Functies</span><span data-lang="en">Features</span></h2>
+          <ul data-lang="nl">
+            <li>Kaartjes met fysieke en mindful oefeningen die je voor het slapen doet.</li>
+            <li>Afstandssensor die merkt wanneer je bij het product bent.</li>
+            <li>Druksensoren en een fysieke knop voor de interactie.</li>
+            <li>Auditieve timer met geluid via een mp3-speler.</li>
+            <li>Visuele timer met LED-strips.</li>
+          </ul>
+          <ul data-lang="en">
+            <li>Cards with physical and mindful exercises you do before sleep.</li>
+            <li>Distance sensor that notices when you're near the product.</li>
+            <li>Pressure sensors and a physical button for interaction.</li>
+            <li>Auditory timer with sound through an mp3 player.</li>
+            <li>Visual timer with LED strips.</li>
+          </ul>
+
+          <h2 class="sec"><span class="sec-no">S4</span><span data-lang="nl">Gebruikte technologieën</span><span data-lang="en">Technologies used</span></h2>
+          <ul data-lang="nl">
+            <li>Hardware: Arduino, afstandssensor, druksensor, mp3-speler, LED-strips</li>
+            <li>Software: C++ (Arduino-programmering)</li>
+            <li>Ontwerptools: Figma, Adobe Illustrator</li>
+          </ul>
+          <ul data-lang="en">
+            <li>Hardware: Arduino, distance sensor, pressure sensor, mp3 player, LED strips</li>
+            <li>Software: C++ (Arduino programming)</li>
+            <li>Design tools: Figma, Adobe Illustrator</li>
+          </ul>
+
+          <h2 class="sec"><span class="sec-no">S5</span><span data-lang="nl">Wat ik heb geleerd</span><span data-lang="en">What I learned</span></h2>
+          <p data-lang="nl">
+            Dit project leerde mij het belang van een gebruikersgericht ontwerpproces, van onderzoek tot iteratief prototypen en testen. Ik heb praktische ervaring opgedaan met hardware-integratie en samenwerken in een multidisciplinair team.
+          </p>
+          <p data-lang="en">
+            This project taught me the importance of a user-centred design
+            process, from research to iterative prototyping and testing. I gained
+            hands-on experience with hardware integration and collaborating in a
+            multidisciplinary team.
+          </p>
+        </div>
       </div>
     </main>
 
