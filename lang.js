@@ -11,6 +11,10 @@
     document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
   }
 
+  // De wisselknop is zonder JS dood en staat daarom standaard verborgen (CSS);
+  // deze class op <html> toont hem zodra hij echt werkt.
+  document.documentElement.classList.add('lang-js');
+
   // Begintaal: opgeslagen voorkeur, anders Nederlands.
   apply(stored === 'en' ? 'en' : 'nl');
 

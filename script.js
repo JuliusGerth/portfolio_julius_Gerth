@@ -62,7 +62,11 @@
     );
   }
 
-  const revealObserver = new IntersectionObserver(
+  // Feature detection vóór gebruik: zonder IntersectionObserver geen reveal-
+  // animatie of actieve nav-link, maar de rest van dit script draait gewoon door.
+  const supportsIO = 'IntersectionObserver' in window;
+
+  const revealObserver = supportsIO ? new IntersectionObserver(
     entries => entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.remove('will-reveal');
@@ -72,15 +76,15 @@
       }
     }),
     { threshold: 0.15 }
-  );
+  ) : null;
 
   document.querySelectorAll('[data-reveal]').forEach(el => {
     const belowFold = el.getBoundingClientRect().top > window.innerHeight;
-    if (!reducedMotion && belowFold) {
+    if (revealObserver && !reducedMotion && belowFold) {
       el.classList.add('will-reveal');
       revealObserver.observe(el);
     } else if (el.classList.contains('stats-strip')) {
-      // Al in beeld (of reduced motion): meteen tellen i.p.v. wachten op scroll.
+      // Al in beeld (of reduced motion/geen observer): meteen tellen.
       startCount(el);
     }
   });
@@ -107,16 +111,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (a) a.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  if (supportsIO) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  }
 
   // ── Back to top ──────────────────────────────────
   backTop.addEventListener('click', () =>

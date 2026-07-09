@@ -362,7 +362,12 @@ nav.scrolled {
 }
 
 /* ── Language toggle button ──────────────────────── */
+/* Zonder JS doet de knop niets → standaard verborgen; lang.js (in de <head>,
+   dus vóór de eerste render) zet .lang-js op <html> zodra de wisselaar werkt. */
 .nav-links .lang-item {
+  display: none;
+}
+html.lang-js .nav-links .lang-item {
   display: flex;
   align-items: center;
 }
@@ -1563,7 +1568,9 @@ main {
   color: var(--accent);
 }
 
-/* Legenda ⇄ pin koppeling, puur CSS via :has(). */
+/* Legenda ⇄ pin koppeling, puur CSS via :has().
+   Toetsenbord doet mee: een pin met :focus-visible licht dezelfde legenda-regel
+   op als een pin onder de muis. */
 .dossier-main:has(.annot-legend li:nth-child(1):hover) .pin[data-pin='1'],
 .dossier-main:has(.annot-legend li:nth-child(2):hover) .pin[data-pin='2'],
 .dossier-main:has(.annot-legend li:nth-child(3):hover) .pin[data-pin='3'] {
@@ -1572,12 +1579,18 @@ main {
 }
 .dossier-main:has(.pin[data-pin='1']:hover) .annot-legend li:nth-child(1),
 .dossier-main:has(.pin[data-pin='2']:hover) .annot-legend li:nth-child(2),
-.dossier-main:has(.pin[data-pin='3']:hover) .annot-legend li:nth-child(3) {
+.dossier-main:has(.pin[data-pin='3']:hover) .annot-legend li:nth-child(3),
+.dossier-main:has(.pin[data-pin='1']:focus-visible) .annot-legend li:nth-child(1),
+.dossier-main:has(.pin[data-pin='2']:focus-visible) .annot-legend li:nth-child(2),
+.dossier-main:has(.pin[data-pin='3']:focus-visible) .annot-legend li:nth-child(3) {
   color: var(--text);
 }
 .dossier-main:has(.pin[data-pin='1']:hover) .annot-legend li:nth-child(1) .n,
 .dossier-main:has(.pin[data-pin='2']:hover) .annot-legend li:nth-child(2) .n,
-.dossier-main:has(.pin[data-pin='3']:hover) .annot-legend li:nth-child(3) .n {
+.dossier-main:has(.pin[data-pin='3']:hover) .annot-legend li:nth-child(3) .n,
+.dossier-main:has(.pin[data-pin='1']:focus-visible) .annot-legend li:nth-child(1) .n,
+.dossier-main:has(.pin[data-pin='2']:focus-visible) .annot-legend li:nth-child(2) .n,
+.dossier-main:has(.pin[data-pin='3']:focus-visible) .annot-legend li:nth-child(3) .n {
   background: var(--accent);
   color: var(--on-accent);
 }
