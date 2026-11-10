@@ -13,187 +13,84 @@
    letter; labels, meta en getallen krijgen mono + hoofdletters.
    Goud = de 'actieve / persoonlijk record'-markering.
    ──────────────────────────────────────────────────────────── */
+/* Thema: licht én donker in één palet via light-dark(licht, donker).
+   Welke kant wint, bepaalt color-scheme:
+   - standaard volgt het de systeemvoorkeur ('light dark');
+   - de handmatige wissel (checkbox + :has(), zónder JavaScript) keert die om.
+   Bijkomend voordeel: color-scheme zet ook scrollbalken en formuliervelden
+   in het juiste thema. */
 :root {
-  --bg: #EDF1EF;
-  --surface: #FFFFFF;
-  --surface-2: #F4F8F6;
-  --text: #0B1A13;
-  /* #4A5A52 haalt WCAG AA ruim op --bg en blijft leesbaar op de nav. */
-  --text-muted: #4A5A52;
-  /* Leesbare bodytekst-inkt: donkerder dan --text-muted (~10:1, AAA op --bg),
-     maar zachter dan de kop-inkt zodat de hiërarchie kop↔body behouden blijft. */
-  --text-body: #2E3B34;
-  --accent: #004225;
-  --accent-hover: #00311B;
-  --accent-light: #DCE7E1;
+  color-scheme: light dark;
+}
+
+:root:has(.theme-switch:checked) {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(.theme-switch:checked) {
+    color-scheme: light;
+  }
+}
+
+:root {
+  --bg: light-dark(#EDF1EF, #0A130E);
+  --surface: light-dark(#FFFFFF, #10201A);
+  --surface-2: light-dark(#F4F8F6, #152C22);
+  --text: light-dark(#0B1A13, #E7F0EA);
+  /* Licht: #4A5A52 haalt WCAG AA ruim op --bg en blijft leesbaar op de nav. */
+  --text-muted: light-dark(#4A5A52, #9CB2A7);
+  /* Licht: bodytekst donkerder dan --text-muted (~10:1, AAA op --bg), maar zachter
+     dan de kop-inkt. Donker: de body leest al ruim (~8:1), dus body = muted. */
+  --text-body: light-dark(#2E3B34, #9CB2A7);
+  --accent: light-dark(#004225, #3EC581);
+  --accent-hover: light-dark(#00311B, #5DD79A);
+  --accent-light: light-dark(#DCE7E1, #16311F);
   --accent-yellow: #F2C200;
   --accent-yellow-soft: #FFE375;
-  --border: #D3DDD7;
-  --tick: #A7B7AF;
+  --border: light-dark(#D3DDD7, #22392E);
+  --tick: light-dark(#A7B7AF, #3B5648);
   /* Setup-balk (pit board): segmentkleuren. --a/c/d verwijzen naar thema-tokens
      en draaien dus vanzelf mee met licht/donker; --b is een vaste mid-tint. */
   --stack-a: var(--accent);
   --stack-b: #2E8B6B;
   --stack-c: var(--accent-yellow);
   --stack-d: var(--tick);
-  /* Tekstkleur bovenop een accent-vlak (draait mee met het thema). */
-  --on-accent: #FFFFFF;
-  --nav-bg: #FFFFFF;
-  --nav-scrolled: rgba(255, 255, 255, 0.85);
+  /* Tekstkleur bovenop een accent-vlak. */
+  --on-accent: light-dark(#FFFFFF, #06140D);
+  --nav-bg: light-dark(#FFFFFF, #0C1812);
+  --nav-scrolled: light-dark(rgba(255, 255, 255, 0.85), rgba(12, 24, 18, 0.82));
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', 'SF Mono', 'Segoe UI Mono', Consolas, 'Liberation Mono', monospace;
-  --shadow-sm: 0 1px 2px rgba(11, 26, 19, 0.06);
-  --shadow-md: 0 10px 30px rgba(11, 26, 19, 0.10);
+  --shadow-sm: 0 1px 2px light-dark(rgba(11, 26, 19, 0.06), rgba(0, 0, 0, 0.4));
+  --shadow-md: 0 10px 30px light-dark(rgba(11, 26, 19, 0.10), rgba(0, 0, 0, 0.55));
   --radius: 6px;
   --radius-sm: 3px;
 
-  /* Hero-instrument bij daglicht (licht thema): pale-groen paneel,
-     groene inkt, groen/goud accenten. Donker thema overschrijft dit. */
-  --hero-bg: linear-gradient(150deg, #E6EFE9 0%, #F3F8F4 52%, #E1EBE4 100%);
-  --hero-border: var(--border);
-  --hero-shadow: var(--shadow-sm);
-  --hero-ink: #0B1A13;
-  --hero-ink-soft: #4A5A52;
-  --hero-name-tail: #0A7D44;
-  --hero-tagline: #004225;
-  --hero-cred: #004225;
-  --hero-bracket: rgba(0, 66, 37, 0.45);
-  --hero-grid: rgba(0, 66, 37, 0.06);
-  --hero-scan: rgba(0, 66, 37, 0.38);
-  --hero-line: var(--border);
-  --hero-link: #004225;
-  --hero-link-hover: #00311B;
-  --hero-dot: #E0A400;
+  /* Hero-instrument: bij daglicht een pale-groen paneel met groene inkt,
+     bij nacht een 'night-race HUD' met gouden accenten. */
+  --hero-bg: linear-gradient(150deg,
+    light-dark(#E6EFE9, #06140D) 0%,
+    light-dark(#F3F8F4, #0A2417) 52%,
+    light-dark(#E1EBE4, #051810) 100%);
+  --hero-border: light-dark(#D3DDD7, rgba(255, 215, 0, 0.14));
+  --hero-shadow: 0 1px 2px light-dark(rgba(11, 26, 19, 0.06), transparent);
+  --hero-ink: light-dark(#0B1A13, #E7F0EA);
+  --hero-ink-soft: light-dark(#4A5A52, rgba(255, 255, 255, 0.74));
+  --hero-name-tail: light-dark(#0A7D44, #FFD700);
+  --hero-tagline: light-dark(#004225, #FFD700);
+  --hero-cred: light-dark(#004225, #FFD84A);
+  --hero-bracket: light-dark(rgba(0, 66, 37, 0.45), rgba(242, 194, 0, 0.65));
+  --hero-grid: light-dark(rgba(0, 66, 37, 0.06), rgba(255, 255, 255, 0.045));
+  --hero-scan: light-dark(rgba(0, 66, 37, 0.38), rgba(242, 194, 0, 0.75));
+  --hero-line: light-dark(#D3DDD7, rgba(255, 255, 255, 0.2));
+  --hero-link: light-dark(#004225, #E7F0EA);
+  --hero-link-hover: light-dark(#00311B, #FFD700);
+  --hero-dot: light-dark(#E0A400, #F2C200);
 
   /* Actief 'OPEN'-veld in de stats-cluster. */
-  --status-bg: #FBF4DA;
-  --status-ink: #7A5C00;
-}
-
-/* ── Donker thema ─────────────────────────────────
-   Native aan het concept: een instrumentenpaneel is 's nachts thuis.
-   Standaard volgt het thema de systeemvoorkeur (prefers-color-scheme).
-   De handmatige wissel verderop (pure CSS via een checkbox + :has(),
-   zónder JavaScript) keert die systeemkeuze om. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0A130E;
-    --surface: #10201A;
-    --surface-2: #152C22;
-    --text: #E7F0EA;
-    --text-muted: #9CB2A7;
-    /* In het donker leest de body al ruim (~8:1); body-inkt = muted. */
-    --text-body: #9CB2A7;
-    --accent: #3EC581;
-    --accent-hover: #5DD79A;
-    --accent-light: #16311F;
-    --border: #22392E;
-    --tick: #3B5648;
-    --on-accent: #06140D;
-    --nav-bg: #0C1812;
-    --nav-scrolled: rgba(12, 24, 18, 0.82);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.55);
-
-    /* Hero-instrument bij nacht (donker thema): night-race HUD. */
-    --hero-bg: linear-gradient(150deg, #06140D 0%, #0A2417 52%, #051810 100%);
-    --hero-border: rgba(255, 215, 0, 0.14);
-    --hero-shadow: none;
-    --hero-ink: #E7F0EA;
-    --hero-ink-soft: rgba(255, 255, 255, 0.74);
-    --hero-name-tail: #FFD700;
-    --hero-tagline: #FFD700;
-    --hero-cred: #FFD84A;
-    --hero-bracket: rgba(242, 194, 0, 0.65);
-    --hero-grid: rgba(255, 255, 255, 0.045);
-    --hero-scan: rgba(242, 194, 0, 0.75);
-    --hero-line: rgba(255, 255, 255, 0.2);
-    --hero-link: #E7F0EA;
-    --hero-link-hover: #FFD700;
-    --hero-dot: #F2C200;
-    --status-bg: rgba(242, 194, 0, 0.07);
-    --status-ink: #F2C200;
-  }
-}
-
-/* Handmatige wissel — puur CSS. Een aangevinkte checkbox (.theme-switch)
-   keert het systeemthema om: licht systeem → donker (dit blok), en
-   donker systeem → licht (het herstelblok hierna). */
-:root:has(.theme-switch:checked) {
-  --bg: #0A130E;
-  --surface: #10201A;
-  --surface-2: #152C22;
-  --text: #E7F0EA;
-  --text-muted: #9CB2A7;
-  --text-body: #9CB2A7;
-  --accent: #3EC581;
-  --accent-hover: #5DD79A;
-  --accent-light: #16311F;
-  --border: #22392E;
-  --tick: #3B5648;
-  --on-accent: #06140D;
-  --nav-bg: #0C1812;
-  --nav-scrolled: rgba(12, 24, 18, 0.82);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 12px 34px rgba(0, 0, 0, 0.55);
-
-  /* Hero-instrument bij nacht (donker thema): night-race HUD. */
-  --hero-bg: linear-gradient(150deg, #06140D 0%, #0A2417 52%, #051810 100%);
-  --hero-border: rgba(255, 215, 0, 0.14);
-  --hero-shadow: none;
-  --hero-ink: #E7F0EA;
-  --hero-ink-soft: rgba(255, 255, 255, 0.74);
-  --hero-name-tail: #FFD700;
-  --hero-tagline: #FFD700;
-  --hero-cred: #FFD84A;
-  --hero-bracket: rgba(242, 194, 0, 0.65);
-  --hero-grid: rgba(255, 255, 255, 0.045);
-  --hero-scan: rgba(242, 194, 0, 0.75);
-  --hero-line: rgba(255, 255, 255, 0.2);
-  --hero-link: #E7F0EA;
-  --hero-link-hover: #FFD700;
-  --hero-dot: #F2C200;
-  --status-bg: rgba(242, 194, 0, 0.07);
-  --status-ink: #F2C200;
-}
-
-/* Donker systeem + aangevinkt → terug naar het lichte palet (pure CSS invert). */
-@media (prefers-color-scheme: dark) {
-  :root:has(.theme-switch:checked) {
-    --bg: #EDF1EF;
-    --surface: #FFFFFF;
-    --surface-2: #F4F8F6;
-    --text: #0B1A13;
-    --text-muted: #4A5A52;
-    --text-body: #2E3B34;
-    --accent: #004225;
-    --accent-hover: #00311B;
-    --accent-light: #DCE7E1;
-    --border: #D3DDD7;
-    --tick: #A7B7AF;
-    --on-accent: #FFFFFF;
-    --nav-bg: #FFFFFF;
-    --nav-scrolled: rgba(255, 255, 255, 0.85);
-    --shadow-sm: 0 1px 2px rgba(11, 26, 19, 0.06);
-    --shadow-md: 0 10px 30px rgba(11, 26, 19, 0.10);
-    --hero-bg: linear-gradient(150deg, #E6EFE9 0%, #F3F8F4 52%, #E1EBE4 100%);
-    --hero-border: var(--border);
-    --hero-shadow: var(--shadow-sm);
-    --hero-ink: #0B1A13;
-    --hero-ink-soft: #4A5A52;
-    --hero-name-tail: #0A7D44;
-    --hero-tagline: #004225;
-    --hero-cred: #004225;
-    --hero-bracket: rgba(0, 66, 37, 0.45);
-    --hero-grid: rgba(0, 66, 37, 0.06);
-    --hero-scan: rgba(0, 66, 37, 0.38);
-    --hero-line: var(--border);
-    --hero-link: #004225;
-    --hero-link-hover: #00311B;
-    --hero-dot: #E0A400;
-    --status-bg: #FBF4DA;
-    --status-ink: #7A5C00;
-  }
+  --status-bg: light-dark(#FBF4DA, rgba(242, 194, 0, 0.07));
+  --status-ink: light-dark(#7A5C00, #F2C200);
 }
 
 html {
@@ -231,7 +128,6 @@ h1, h2, h3,
 }
 
 /* Gedeelde mono-'label'-stijl: het handschrift van het instrumentpaneel. */
-.mono-label,
 .hero-eyebrow,
 .stat-label,
 .hero-readout dt,
@@ -1229,72 +1125,6 @@ main {
   transform: translateY(-2px);
 }
 
-/* ── Project detail pages ────────────────────────── */
-.project-detail {
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 3rem 0;
-}
-
-.project-detail h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.project-detail h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 2rem 0 0.75rem;
-}
-
-/* Mono 'sector'-markering vóór elke tussenkop op detailpagina's. */
-.project-detail h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.5rem;
-  color: var(--text);
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.project-detail h3::before {
-  content: '//';
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
-}
-
-.project-detail p {
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.project-detail ul {
-  color: var(--text-muted);
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.project-detail ul li {
-  margin-bottom: 0.5rem;
-}
-
-.project-detail img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  margin: 1rem 0;
-}
-
-/* Staande foto's niet oprekken tot paginabreedte. */
-.project-detail img.img-portrait {
-  width: auto;
-  max-width: min(100%, 480px);
-}
-
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -1627,7 +1457,6 @@ main {
   border: 1px solid var(--border);
   margin: 1rem 0;
 }
-.case-body img.img-portrait { width: auto; max-width: min(100%, 460px); }
 
 /* Component contact sheet (design-system page) */
 .compsheet {
@@ -1816,7 +1645,7 @@ footer a:hover {
   height: auto;
 }
 
-/* De stage geeft zelf het kader; overschrijf de generieke .project-detail img-regels. */
+/* De stage geeft zelf het kader; overschrijf de generieke .case-body img-regels. */
 .demo-stage img {
   border: 0;
   border-radius: 0;

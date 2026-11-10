@@ -5,7 +5,7 @@
   // Respecteer de animatie-voorkeur van de bezoeker.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ── Hero: blobs volgen de muis subtiel ───────────
+  // ── Hero: meetraster + scan-lijn volgen de muis subtiel ──
   const hero = document.querySelector('.hero');
   const heroBg = document.querySelector('.hero-bg');
   if (hero && heroBg && !reducedMotion) {
@@ -17,22 +17,6 @@
     });
     hero.addEventListener('mouseleave', () => {
       heroBg.style.transform = '';
-    });
-  }
-
-  // ── Projectkaarten: 3D-tilt met de muis ──────────
-  if (!reducedMotion && window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform =
-          `perspective(800px) translateY(-4px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
     });
   }
 
