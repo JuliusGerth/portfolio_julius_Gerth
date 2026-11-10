@@ -128,7 +128,6 @@ h1, h2, h3,
 }
 
 /* Gedeelde mono-'label'-stijl: het handschrift van het instrumentpaneel. */
-.hero-eyebrow,
 .stat-label,
 .hero-readout dt,
 .nav-links a,
@@ -483,22 +482,6 @@ main {
 @keyframes content-enter {
   from { opacity: 0; transform: translateX(16px); }
   to   { opacity: 1; transform: translateX(0); }
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 0.68rem;
-  color: var(--hero-ink-soft);
-  margin-bottom: 0.75rem;
-}
-
-.hero-eyebrow::before {
-  content: '';
-  width: 26px;
-  height: 1px;
-  background: var(--hero-bracket);
 }
 
 .hero-content h1 {
@@ -1561,8 +1544,6 @@ footer a:hover {
     justify-items: center;
     gap: 1.5rem;
   }
-
-  .hero-eyebrow { justify-content: center; }
 
   .hero-desc { margin-left: auto; margin-right: auto; }
 
